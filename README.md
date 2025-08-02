@@ -11,7 +11,7 @@ The application contains the following main entities:
 1. **Category**: Defines the topics under which quizzes are organized.
 2. **Quiz**: Represents a quiz created under a specific category.
 3. **Question**: Each quiz contains multiple questions with multiple choice options.
-4. **User**: People who register to take quizzes (includes admin users).
+4. **User**: People who register to take quizzes (includes admin).
 5. **Score**: Tracks quiz attempts and scores achieved by users.
 
 ---
@@ -75,7 +75,7 @@ The application contains the following main entities:
 ### 📚 Category & Quiz
 - Each quiz must belong to a valid category.
 - A category can contain multiple quizzes.
-- Categories must be created by admin users.
+- Categories must be created by admin.
 
 ### 🧩 Quiz & Question
 - A quiz can contain multiple questions.
@@ -87,16 +87,16 @@ The application contains the following main entities:
   - One correct option, which must match one of the provided options.
 
 ### 🧑‍💼 User & Quiz
-- Only admin users can create, update, or delete quizzes.
-- Regular users can only view and play active quizzes.
-- Each quiz has a creator (userId), which must be an admin.
+- Only admin can create, update, or delete categories of quizzes.
+- Regular users can create quizzes and also play active quizzes.
+- Each quiz has a creator (userId).
 
 
 ### 🧑‍💼 User & Score
 - A user can play multiple quizzes.
 - Each attempt is recorded in the `scores` table.
 - Each score must be linked to one existing user.
-- 
+ 
 
 ### 📝 Quiz & Score
 - A quiz can be played by multiple users.
@@ -109,8 +109,8 @@ The application contains the following main entities:
 ## 🚀 Features
 
 - User Registration & Login
-- Admins can create categories, quizzes, and questions.
-- Users can play quizzes.
+- Admins can create categories.
+- Users can create quizzes and play quizzes.
 - Scores are recorded and retrievable for history or scoreboard.
 
 ---
