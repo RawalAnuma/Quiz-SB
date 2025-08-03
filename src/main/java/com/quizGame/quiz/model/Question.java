@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Questions {
+public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int questionId;
@@ -15,7 +15,7 @@ public class Questions {
     private int[] options = new int[4];
     private int correct_index;
 
-    public Questions(String title, int option_1, int option_2, int option_3, int option_4, int correct_index)
+    public Question(String title, int option_1, int option_2, int option_3, int option_4, int correct_index)
     {
         this.title = title;
         this.options[0] = option_1;
