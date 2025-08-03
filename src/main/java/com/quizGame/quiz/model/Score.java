@@ -1,45 +1,47 @@
 package com.quizGame.quiz.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.sql.Date;
 import java.sql.Timestamp;
 
 
 @Entity
-public class Scores {
+@Table(name = "scores")
+public class Score {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int scoreId;
 
-    private int userId;
-    private int quizId;
+    @ManyToOne
+    @JoinColumn(name = "userId", nullable = false)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "quizId", nullable = false)
+    private Quiz quiz;
+
     private int score;
-    private Timestamp playedDate;
+    private Date playedDate;
 
-    public Scores(int userId, int score) {
-        this.userId = userId;
-        this.score = score;
 
-    }
     public int getScoreId() {
         return scoreId;
     }
     public void setScoreId(int scoreId) {
         this.scoreId = scoreId;
     }
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
-    public int getQuizId() {
-        return quizId;
+    public Quiz getQuiz() {
+        return quiz;
     }
-    public void setQuizId(int quizId) {
-        this.quizId = quizId;
+    public void setQuiz(Quiz quiz) {
+        this.quiz = quiz;
     }
 
     public int getScore() {
@@ -48,10 +50,10 @@ public class Scores {
     public void setScore(int score) {
         this.score = score;
     }
-    public Timestamp getPlayedDate() {
+    public Date getPlayedDate() {
         return playedDate;
     }
-    public void setPlayedDate(Timestamp playedDate) {
+    public void setPlayedDate(Date playedDate) {
         this.playedDate = playedDate;
     }
 
