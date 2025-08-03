@@ -1,53 +1,54 @@
 package com.quizGame.quiz.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
-public class Quizes {
+@Table(name = "quizes")
+public class Quiz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int quizId;
 
-    private int userId;
-    private int categoryId;
+    @ManyToOne
+    @JoinColumn(name = "userId", nullable = false)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "categoryId", nullable = false)
+    private Category category;
+
     private String quizName;
     private String quizDescription;
     private int noOfQuestionsToPlay;
-    private Timestamp createdDate;
+    private Date createdDate;
     private boolean status;
 
-    public Quizes() {
+    public Quiz() {
     }
-    public Quizes(int userId, int categoryId, String quizName, String quizDescription, int noOfQuestionsToPlay) {
-        this.userId = userId;
-        this.categoryId = categoryId;
-        this.quizName = quizName;
-        this.quizDescription = quizDescription;
-        this.noOfQuestionsToPlay = noOfQuestionsToPlay;
-    }
+
     public int getQuizId() {
         return quizId;
     }
     public void setQuizId(int quizId) {
         this.quizId = quizId;
     }
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
-    public int getCategoryId() {
-        return categoryId;
+
+    public Category getCategory() {
+        return category;
     }
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
+
     public String getQuizName() {
         return quizName;
     }
@@ -66,10 +67,10 @@ public class Quizes {
     public void setNoOfQuestionsToPlay(int noOfQuestionsToPlay) {
         this.noOfQuestionsToPlay = noOfQuestionsToPlay;
     }
-    public Timestamp getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
-    public void setCreatedDate(Timestamp createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
     public boolean isStatus() {
