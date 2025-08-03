@@ -1,46 +1,43 @@
-package controller;
+package com.quizGame.quiz.controller;
 
-import dao.UserDAO;
-import model.User;
-import view.GameMasterView;
-import view.PlayerView;
+import com.quizGame.quiz.model.User;
+import com.quizGame.quiz.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
 
-public class UserController {
-    private UserDAO userdao;
+@Controller
+@RequestMapping("/user")
+public class UserController{
 
-    {
-        try {
-            userdao = new UserDAO();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+    @Autowired
+    private UserService userService;
+
+
+    @PostMapping("/signup")
+    public String signup(@RequestParam String fullName, @RequestParam String userName, @RequestParam String password, Model model) {
+        User user = new User(fullName,userName, password);
+        userService.insertUser(user);
+        model.addAttribute("message", "User registered successfully!");
+        return "redirect:/login"; // Redirect to login page after signup
+
     }
 
-    public boolean signUp(String username, String password){
-        boolean isSignedUp = false;
-        User user = new User(username, password);
-        isSignedUp = userdao.insertUser(user);
-        if(isSignedUp) {
-            return true;
-        }else{
-            return false;
-        }
-    }
-    public boolean logIn(String username, String password) throws SQLException, ClassNotFoundException {
-        User user = userdao.checkUser(username, password);
+    @PostMapping("/login")
+    public String login(@RequestParam String userName, @RequestParam String password, Model model) {
+        User user = userService.login(userName, password);
         if(user != null){
-            if(user.isGameMaster()){
-                GameMasterView.show(user);
-            }else{
-                PlayerView.gameStart(user);
-            }
-            return true;
+            System.out.println("Login successful for user: " + user.getUserName());
+            return "category";
         }
-        return false;
+        else {
+            System.out.println("Login failed for user: " + userName);
+            model.addAttribute("error", "Invalid username or password");
+            return "login";
+        }
+
     }
 
 }
