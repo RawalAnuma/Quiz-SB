@@ -1,4 +1,7 @@
 package com.quizGame.quiz.repository;
 
-public interface QuizRepository {
+import com.quizGame.quiz.model.Quiz;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface QuizRepository extends JpaRepository<Quiz, Integer> {
 }
