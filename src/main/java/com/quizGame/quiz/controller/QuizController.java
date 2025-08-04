@@ -7,9 +7,13 @@ import com.quizGame.quiz.service.QuizService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/quizzes")
@@ -33,4 +37,13 @@ public class QuizController {
         quiz.setUser(user);
         quizService.insertQuiz(quiz);
     }
+
+    @GetMapping("/getQuizByUserId")
+    public String getQuizByUserId(HttpSession session, Model model){
+        User user = (User) session.getAttribute("user");
+        List<Quiz> quizzes = quizService.getQuizByUserId(user);
+        model.addAttribute("quizzes", quizzes);
+        return "quizzes";
+    }
+
 }
