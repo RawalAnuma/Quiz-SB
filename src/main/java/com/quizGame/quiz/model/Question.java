@@ -13,17 +13,17 @@ public class Question {
 
     private String title;
     private int[] options = new int[4];
-    private int correct_index;
+    private int correctOption;
 
-    public Question(String title, int option_1, int option_2, int option_3, int option_4, int correct_index)
-    {
+    public Question(String title, int option1, int option2, int option3, int option4, int correctOption) {
         this.title = title;
-        this.options[0] = option_1;
-        this.options[1] = option_2;
-        this.options[2] = option_3;
-        this.options[3]= option_4;
-        this.correct_index = correct_index;
+        this.options[0] = option1;
+        this.options[1] = option2;
+        this.options[2] = option3;
+        this.options[3] = option4;
+        this.correctOption = correctOption;
     }
+
 
     public int getQuestionId(){
         return questionId;
@@ -43,11 +43,11 @@ public class Question {
 
 
     public int getCorrect_index() {
-        return correct_index;
+        return correctOption;
     }
 
     public void setCorrect_index(int correct_index) {
-        this.correct_index = correct_index;
+        this.correctOption = correctOption;
     }
 
     public void showOptions(){
@@ -57,7 +57,7 @@ public class Question {
     }
 
     public boolean checkAnswer(int answer){
-        if((answer) == this.correct_index){
+        if((answer) == this.correctOption){
             return true;
         }
         return false;
