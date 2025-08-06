@@ -1,14 +1,12 @@
 package com.quizGame.quiz.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
-
+@Table(name = "category")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,15 +14,11 @@ public class Category {
 
     private String categoryName;
     private String categoryDescription;
-    private Timestamp createdDate;
 
-    public Category() {
-    }
-    public Category(String categoryName, String categoryDescription) {
-        this.categoryName = categoryName;
-        this.categoryDescription = categoryDescription;
-        this.createdDate = new Timestamp(System.currentTimeMillis());
-    }
+    @Column(name = "createdDate", insertable = false)
+    private Date createdDate;
+
+
 
     public int getCategoryId() {
         return categoryId;
@@ -44,10 +38,10 @@ public class Category {
     public void setCategoryDescription(String categoryDescription) {
         this.categoryDescription = categoryDescription;
     }
-    public Timestamp getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
-    public void setCreatedDate(Timestamp createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 }
