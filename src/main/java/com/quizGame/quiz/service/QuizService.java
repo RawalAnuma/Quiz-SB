@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class  QuizService {
@@ -18,6 +19,9 @@ public class  QuizService {
         quizRepository.save(quiz);
     }
     public List<Quiz> getQuizByUserId(User user) {
-        return quizRepository.findByUserId(user);
+        return quizRepository.findByUser(user);
+    }
+    public Optional<Quiz> getQuizById(int quizId) {
+        return quizRepository.findById(quizId);
     }
 }
