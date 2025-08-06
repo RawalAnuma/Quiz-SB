@@ -8,8 +8,8 @@
 </head>
 <body class="bg-gray-100">
 
-<div class="flex items-center justify-center h-screen">
-    <div class="bg-white p-10 rounded-lg shadow-lg w-96 text-center">
+<div class="flex items-center justify-center h-screen ">
+    <div class="bg-white p-10 rounded-lg shadow-lg w-96 text-center box-shadow: 0 0 15px black">
         <h1 class="text-3xl font-bold mb-6 text-blue-600">Welcome to Quiz World</h1>
         <p class="text-gray-700 mb-8">What would you like to do?</p>
 
