@@ -38,12 +38,16 @@ public class QuizController {
         quizService.insertQuiz(quiz);
     }
 
-    @GetMapping("/getQuizByUserId")
+    @GetMapping("/getQuiz")
     public String getQuizByUserId(HttpSession session, Model model){
         User user = (User) session.getAttribute("user");
         List<Quiz> quizzes = quizService.getQuizByUserId(user);
         model.addAttribute("quizzes", quizzes);
         return "quizzes";
+    }
+
+    public Quiz getQuizById(int quizId) {
+        return quizService.getQuizById(quizId).orElseThrow(() -> new RuntimeException("Quiz not found with id: " + quizId));
     }
 
 }
