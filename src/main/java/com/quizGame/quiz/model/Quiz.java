@@ -23,7 +23,11 @@ public class Quiz {
     private String quizName;
     private String quizDescription;
     private int noOfQuestionsToPlay;
+
+    @Column(name= "createdDate", insertable = false)
     private Date createdDate;
+
+    @Column(name = "status", insertable = false)
     private boolean status;
 
     public Quiz() {
