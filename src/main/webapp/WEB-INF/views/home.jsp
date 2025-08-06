@@ -13,7 +13,7 @@
     <div class="container" style="width: 400px; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1);">
         <div class="form">
             <form action = "${pageContext.request.contextPath}/user/signup" method = "post">
-            <h1 class="text-2xl font-bold mb-4">Welcome to Quiz World</h1><br>
+            <h1 class="text-2xl font-bold mb-4 text-align: center">Sign Up</h1><br>
 
                 <label for="fullName" class="block mb-2">Fullname:</label>
                 <input type="text" id="fullName" name="fullName" class="w-full p-2 mb-4 border rounded" required><br>
@@ -27,7 +27,7 @@
 
                 <input type = "submit" value = "Sign Up" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
             </form>
-            <p class="mt-4 text-center">Already have an account? <a href="${pageContext.request.contextPath}/user/login" class="text-blue-500 hover:underline">Login here</a></p>
+            <p class="mt-4 text-center">Already have an account? <a href="${pageContext.request.contextPath}/login" class="text-blue-500 hover:underline">Login here</a></p>
         </div>
     </div>
 </body>
