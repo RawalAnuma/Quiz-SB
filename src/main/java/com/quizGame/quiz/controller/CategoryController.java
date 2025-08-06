@@ -35,8 +35,8 @@ public class CategoryController {
         return "createQuiz";
     }
 
-    @GetMapping("/getCategoryById")
-    public Category getCategoryById(@RequestParam int categoryId) {
+
+    public Category getCategoryById(int categoryId) {
         Optional<Category> category = categoryService.getCategoryById(categoryId);
         if (category.isPresent()) {
             return category.get();
