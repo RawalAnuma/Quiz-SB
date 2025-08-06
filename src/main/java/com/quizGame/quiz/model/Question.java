@@ -1,29 +1,30 @@
 package com.quizGame.quiz.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "questions")
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int questionId;
 
+    @ManyToOne
+    @JoinColumn (name = "quizId", nullable = false)
+    private Quiz quiz;
+
     private String title;
-    private int[] options = new int[4];
+    private String option1, option2, option3, option4;
     private int correctOption;
+    
 
-    public Question(String title, int option1, int option2, int option3, int option4, int correctOption) {
-        this.title = title;
-        this.options[0] = option1;
-        this.options[1] = option2;
-        this.options[2] = option3;
-        this.options[3] = option4;
-        this.correctOption = correctOption;
+
+    public Quiz getQuiz() {
+        return quiz;
     }
-
+    public void setQuiz(Quiz quiz) {
+        this.quiz = quiz;
+    }
 
     public int getQuestionId(){
         return questionId;
@@ -41,19 +42,35 @@ public class Question {
         this.title = title;
     }
 
-
-    public int getCorrect_index() {
+    public String getOption1() {
+        return option1;
+    }
+    public void setOption1(String option1) {
+        this.option1 = option1;
+    }
+    public String getOption2() {
+        return option2;
+    }
+    public void setOption2(String option2) {
+        this.option2 = option2;
+    }
+    public String getOption3() {
+        return option3;
+    }
+    public void setOption3(String option3) {
+        this.option3 = option3;
+    }
+    public String getOption4() {
+        return option4;
+    }
+    public void setOption4(String option4) {
+        this.option4 = option4;
+    }
+    public int getCorrectOption() {
         return correctOption;
     }
-
-    public void setCorrect_index(int correct_index) {
+    public void setCorrectOption(int correctOption) {
         this.correctOption = correctOption;
-    }
-
-    public void showOptions(){
-        for(int i = 0; i < this.options.length; i++){
-            System.out.println(i+1 + " . "+ options[i]);
-        }
     }
 
     public boolean checkAnswer(int answer){
@@ -63,7 +80,5 @@ public class Question {
         return false;
     }
 
-    public int[] getOptions() {
-        return options;
-    }
+
 }
