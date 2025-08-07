@@ -6,9 +6,7 @@ import com.quizGame.quiz.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,12 +20,39 @@ public class QuestionController {
     @Autowired
     private QuizController quizController;
 
+
+    @PostMapping("/addQuestion")
+        public void insertQuestion(@RequestParam int quizId,
+                                   @RequestParam String title,
+                                   @RequestParam String option1,
+                                   @RequestParam String option2,
+                                   @RequestParam String option3,
+                                   @RequestParam String option4,
+                                   @RequestParam int correctOption) {
+        Quiz quiz = quizController.getQuizById(quizId);
+        Question question = new Question();
+        question.setTitle(title);
+        question.setOption1(option1);
+        question.setOption2(option2);
+        question.setOption3(option3);
+        question.setOption4(option4);
+        question.setCorrectOption(correctOption);
+        question.setQuiz(quiz);
+        questionService.insertQuestion(question);
+    }
+
+
     @GetMapping("/getQuestions/{quizId}")
     public String getQuestionsByQuizID(@PathVariable int quizId, Model model){
         Quiz quiz = quizController.getQuizById(quizId);
         List<Question> questions = questionService.getQuestionsByQuizId(quiz);
         model.addAttribute("questions", questions);
         return "questions";
+    }
+
+    public Question getQuestionById(int questionId) {
+        return questionService.getQuestionById(questionId);
+
     }
 
 }
