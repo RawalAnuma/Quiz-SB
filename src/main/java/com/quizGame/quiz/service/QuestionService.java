@@ -14,7 +14,16 @@ public class QuestionService {
     @Autowired
     private QuestionRepository questionRepository;
 
+    public void insertQuestion(Question question) {
+        questionRepository.save(question);
+    }
+
     public List<Question> getQuestionsByQuizId(Quiz quiz) {
         return questionRepository.findByQuiz(quiz);
+    }
+
+    public Question getQuestionById(int questionId) {
+        return questionRepository.findById(questionId)
+                .orElseThrow(() -> new RuntimeException("Question not found with id: " + questionId));
     }
 }
