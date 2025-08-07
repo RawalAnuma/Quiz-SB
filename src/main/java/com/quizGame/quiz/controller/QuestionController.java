@@ -22,7 +22,7 @@ public class QuestionController {
 
 
     @PostMapping("/addQuestion")
-        public void insertQuestion(@RequestParam int quizId,
+        public String insertQuestion(@RequestParam int quizId,
                                    @RequestParam String title,
                                    @RequestParam String option1,
                                    @RequestParam String option2,
@@ -39,6 +39,26 @@ public class QuestionController {
         question.setCorrectOption(correctOption);
         question.setQuiz(quiz);
         questionService.insertQuestion(question);
+        return "redirect:/questions/getQuestions/" + quizId;
+    }
+
+    @PutMapping("/updateQuestion/{questionId}")
+    public String updateQuestion(@PathVariable int questionId,
+                                 @RequestParam String title,
+                                 @RequestParam String option1,
+                                 @RequestParam String option2,
+                                 @RequestParam String option3,
+                                 @RequestParam String option4,
+                                 @RequestParam int correctOption) {
+        Question question = getQuestionById(questionId);
+        question.setTitle(title);
+        question.setOption1(option1);
+        question.setOption2(option2);
+        question.setOption3(option3);
+        question.setOption4(option4);
+        question.setCorrectOption(correctOption);
+        questionService.insertQuestion(question);
+        return "redirect:/questions/getQuestions/" + question.getQuiz().getQuizId();
     }
 
 
@@ -49,6 +69,17 @@ public class QuestionController {
         model.addAttribute("questions", questions);
         return "questions";
     }
+
+
+
+
+
+
+
+
+
+
+
 
     public Question getQuestionById(int questionId) {
         return questionService.getQuestionById(questionId);
