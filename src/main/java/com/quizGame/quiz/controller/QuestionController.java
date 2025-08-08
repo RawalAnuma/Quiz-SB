@@ -21,7 +21,7 @@ public class QuestionController {
     private QuizController quizController;
 
 
-    @PostMapping("/addQuestion")
+    @PostMapping//("/addQuestion")
         public String insertQuestion(@RequestParam int quizId,
                                    @RequestParam String title,
                                    @RequestParam String option1,
