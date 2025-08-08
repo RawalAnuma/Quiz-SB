@@ -25,7 +25,7 @@ public class QuizController {
     @Autowired
     private CategoryController categoryController;
 
-    @PostMapping("/addQuiz")
+    @PostMapping//("/addQuiz")
     public void createQuiz(@RequestParam String quizName, @RequestParam String quizDescription, @RequestParam int noOfQuestionsToPlay, @RequestParam int categoryId, HttpSession session) {
         User user = (User) session.getAttribute("user");
         Category category = categoryController.getCategoryById(categoryId);
