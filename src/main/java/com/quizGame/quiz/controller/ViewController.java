@@ -41,4 +41,9 @@ public class ViewController {
         return "updateQuestion";
     }
 
+    @GetMapping("/add")
+    public String showAddCategoryPage() {
+        return "addCategory";
+    }
+
 }
