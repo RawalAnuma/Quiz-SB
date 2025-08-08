@@ -21,18 +21,19 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @PostMapping//("/addCategory")
-    public void addCategory(@RequestParam String categoryName, @RequestParam String categoryDescription){
+    public String addCategory(@RequestParam String categoryName, @RequestParam String categoryDescription){
         Category category = new Category();
         category.setCategoryName(categoryName);
         category.setCategoryDescription(categoryDescription);
         categoryService.insertCategory(category);
+        return "redirect:/categories/getAllCategories";
     }
 
     @GetMapping("/getAllCategories")
     public String getAllCategories(Model model){
         List<Category> categories = categoryService.getAllCategories();
         model.addAttribute("categories", categories);
-        return "createQuiz";
+        return "viewCategories";
     }
 
 
