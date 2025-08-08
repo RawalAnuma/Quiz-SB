@@ -17,7 +17,7 @@ public class UserController {
     private UserService userService;
 
 
-    @PostMapping("/signup")
+    @PostMapping//("/signup")
     public String signup(@RequestParam String fullName, @RequestParam String userName, @RequestParam String password) {
         User user = new User();
         user.setFullName(fullName);
