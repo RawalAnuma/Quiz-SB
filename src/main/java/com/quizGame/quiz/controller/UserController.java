@@ -42,4 +42,10 @@ public class UserController {
             return "login";
         }
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate(); // Invalidate the session to log out the user
+        return "redirect:/login";
+    }
 }
