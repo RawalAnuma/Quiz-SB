@@ -26,4 +26,7 @@ public class QuestionService {
         return questionRepository.findById(questionId)
                 .orElseThrow(() -> new RuntimeException("Question not found with id: " + questionId));
     }
+    public void editQuestion(Question question) {
+        questionRepository.save(question);
+    }
 }
