@@ -10,7 +10,7 @@
 <div class="form-container" style="font-family: Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh;">
     <div class="container" style="width: 600px; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1);">
         <div class="form">
-            <form action="${pageContext.request.contextPath}/questions/addQuestion" method="post">
+            <form action="${pageContext.request.contextPath}/questions" method="post">
                 <h1 class="text-2xl font-bold mb-4">Insert Questions</h1>
                 <input type="hidden" name="quizId" value="${quizId}"/><br>
 
