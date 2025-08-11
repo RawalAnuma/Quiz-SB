@@ -8,10 +8,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,7 +23,7 @@ public class QuizController {
     private CategoryController categoryController;
 
     @PostMapping//("/addQuiz")
-    public void createQuiz(@RequestParam String quizName, @RequestParam String quizDescription, @RequestParam int noOfQuestionsToPlay, @RequestParam int categoryId, HttpSession session) {
+    public String createQuiz(@RequestParam String quizName, @RequestParam String quizDescription, @RequestParam int noOfQuestionsToPlay, @RequestParam int categoryId, HttpSession session) {
         User user = (User) session.getAttribute("user");
         Category category = categoryController.getCategoryById(categoryId);
         Quiz quiz = new Quiz();
@@ -36,6 +33,7 @@ public class QuizController {
         quiz.setCategory(category);
         quiz.setUser(user);
         quizService.insertQuiz(quiz);
+        return "redirect:/quizzes/getQuiz";
     }
 
     @GetMapping("/getQuiz")
@@ -44,6 +42,27 @@ public class QuizController {
         List<Quiz> quizzes = quizService.getQuizByUserId(user);
         model.addAttribute("quizzes", quizzes);
         return "quizzes";
+    }
+
+    @GetMapping("/setStatus/{quizId}/{status}")
+    public String setQuizStatus(@PathVariable int quizId, @PathVariable String status) {
+        Quiz quiz = getQuizById(quizId);
+        if ("Active".equalsIgnoreCase(status)) {
+            quiz.setStatus(false);
+        } else if ("Inactive".equalsIgnoreCase(status)) {
+            quiz.setStatus(true);
+        } else {
+            throw new RuntimeException("Invalid status: " + status);
+        }
+        quizService.setStatus(quiz);
+        return "redirect:/quizzes/getQuiz";
+
+    }
+
+    @GetMapping("/deleteQuiz/{quizId}")
+    public String deleteQuiz(@PathVariable int quizId) {
+        quizService.deleteQuiz(quizId);
+        return "redirect:/quizzes/getQuiz";
     }
 
     public Quiz getQuizById(int quizId) {
