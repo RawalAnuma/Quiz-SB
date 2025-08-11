@@ -4,45 +4,77 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Quizzes</title>
+    <title>Quiz Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
-    <div class="max-w-6xl mx-auto p-8">
-        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Quiz Details</h1>
-        <div class="overflow-x-auto">
-            <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
-                <thead class="bg-blue-500 text-white">
-                    <tr>
-                        <th class="py-3 px-4 border-b text-left">Quiz ID</th>
-                        <th class="py-3 px-4 border-b text-left">Quiz Name</th>
-                        <th class="py-3 px-4 border-b text-left">Description</th>
-                        <th class="py-3 px-4 border-b text-left">No. of Questions</th>
-                        <th class="py-3 px-4 border-b text-center">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="quiz" items="${quizzes}">
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-2 px-4 border-b">${quiz.quizId}</td>
-                            <td class="py-2 px-4 border-b">${quiz.quizName}</td>
-                            <td class="py-2 px-4 border-b">${quiz.quizDescription}</td>
-                            <td class="py-2 px-4 border-b">${quiz.noOfQuestionsToPlay}</td>
-                            <td class="py-2 px-4 border-b text-center space-x-2">
-                                <a href="${pageContext.request.contextPath}/addQuestionView/${quiz.quizId}"
-                                   class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-3 rounded">
-                                    Add Questions
-                                </a>
-                                <a href="${pageContext.request.contextPath}/questions/getQuestions/${quiz.quizId}"
-                                   class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-3 rounded">
-                                    View Questions
-                                </a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
-        </div>
+<body class="bg-gray-50">
+<div class="max-w-6xl mx-auto p-8">
+    <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Quiz Details</h1>
+
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
+            <thead class="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
+            <tr>
+                <th class="py-3 px-4 text-left">Quiz ID</th>
+                <th class="py-3 px-4 text-left">Quiz Name</th>
+                <th class="py-3 px-4 text-left">Description</th>
+                <th class="py-3 px-4 text-left">No. of Questions</th>
+                <th class="py-3 px-4 text-left">Actions</th>
+            </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+            <c:forEach var="quiz" items="${quizzes}">
+                <tr class="hover:bg-gray-100 transition-colors duration-200 even:bg-gray-50">
+                    <td class="py-2 px-4">${quiz.quizId}</td>
+                    <td class="py-2 px-4 font-medium text-gray-700">${quiz.quizName}</td>
+                    <td class="py-2 px-4 text-gray-600">${quiz.quizDescription}</td>
+                    <td class="py-2 px-4 text-center">${quiz.noOfQuestionsToPlay}</td>
+                    <td class="py-2 px-4">
+
+                        <div class="flex flex-wrap gap-2 justify-center">
+
+                            <!-- Status Button -->
+                            <c:choose>
+                                <c:when test="${quiz.status == 'active'}">
+                                    <a href="<c:url value='/quizzes/setStatus/${quiz.quizId}/${quiz.status}'/>"
+                                       class="bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
+                                        Active
+                                    </a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="<c:url value='/quizzes/setStatus/${quiz.quizId}/${quiz.status}'/>"
+                                       class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
+                                        Inactive
+                                    </a>
+                                </c:otherwise>
+                            </c:choose>
+
+                            <!-- Delete Button -->
+                            <a href="<c:url value='/quizzes/deleteQuiz/${quiz.quizId}'/>"
+                               onclick="return confirm('Are you sure you want to delete this quiz?');"
+                               class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
+                                Delete
+                            </a>
+
+                            <!-- Add Questions Button -->
+                            <a href="<c:url value='/addQuestionView/${quiz.quizId}'/>"
+                               class="bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
+                                Add Questions
+                            </a>
+
+                            <!-- View Questions Button -->
+                            <a href="<c:url value='/questions/getQuestions/${quiz.quizId}'/>"
+                               class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
+                                View Questions
+                            </a>
+                        </div>
+
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
     </div>
+</div>
 </body>
 </html>
