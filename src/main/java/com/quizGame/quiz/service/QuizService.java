@@ -18,6 +18,9 @@ public class  QuizService {
     public void insertQuiz(Quiz quiz){
         quizRepository.save(quiz);
     }
+    public List<Quiz> getAllQuizzes() {
+        return quizRepository.findAll();
+    }
     public List<Quiz> getQuizByUserId(User user) {
         return quizRepository.findByUser(user);
     }
