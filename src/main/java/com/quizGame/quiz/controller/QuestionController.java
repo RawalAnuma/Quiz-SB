@@ -57,17 +57,25 @@ public class QuestionController {
         question.setOption3(option3);
         question.setOption4(option4);
         question.setCorrectOption(correctOption);
-        questionService.insertQuestion(question);
+        questionService.editQuestion(question);
         return "redirect:/questions/getQuestions/" + question.getQuiz().getQuizId();
     }
 
+    public List<Question> getQuestionsByQuizId(int quizId){
+        Quiz quiz = quizController.getQuizById(quizId);
+        return questionService.getQuestionsByQuizId(quiz);
+    }
 
     @GetMapping("/getQuestions/{quizId}")
-    public String getQuestionsByQuizID(@PathVariable int quizId, Model model){
-        Quiz quiz = quizController.getQuizById(quizId);
-        List<Question> questions = questionService.getQuestionsByQuizId(quiz);
-        model.addAttribute("questions", questions);
+    public String getQuizQuestion(@PathVariable int quizId, Model model){
+        model.addAttribute("questions", getQuestionsByQuizId(quizId));
         return "questions";
+    }
+
+    @GetMapping("/playQuiz/{quizId}")
+    public String getQuestionToPlay(@PathVariable int quizId, Model model) {
+        model.addAttribute("questions", getQuestionsByQuizId(quizId));
+        return "quizGame";
     }
 
 
