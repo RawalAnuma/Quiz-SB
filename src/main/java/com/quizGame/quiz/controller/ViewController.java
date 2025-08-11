@@ -13,6 +13,9 @@ public class ViewController {
     @Autowired
     private QuestionController questionController;
 
+    @Autowired
+
+
     @GetMapping("/home")
     public String showHomePage() {
         return "home";
@@ -36,14 +39,23 @@ public class ViewController {
 
     @GetMapping("/updateQuestionView/{questionId}")
     public String showUpdateQuestionPage(@PathVariable int questionId, Model model){
-        Question question = questionController.getQuestionById(questionId);
-        model.addAttribute("question", question);
+        model.addAttribute("questionId", questionId);
         return "updateQuestion";
     }
 
     @GetMapping("/add")
     public String showAddCategoryPage() {
         return "addCategory";
+    }
+
+    @GetMapping("/viewCategories")
+    public String showViewCategoriesPage() {
+        return "viewCategories";
+    }
+
+    @GetMapping("/addQuiz")
+    public String showAddQuizPage() {
+        return "createQuiz";
     }
 
 }
