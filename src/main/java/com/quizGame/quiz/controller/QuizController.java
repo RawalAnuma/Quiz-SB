@@ -36,6 +36,12 @@ public class QuizController {
         return "redirect:/quizzes/getQuiz";
     }
 
+    @GetMapping("/allQuizzes")
+    public String getAllQuizzes(Model model){
+        model.addAttribute("availableQuizzes", quizService.getAllQuizzes());
+        return "playQuiz";
+    }
+
     @GetMapping("/getQuiz")
     public String getQuizByUserId(HttpSession session, Model model){
         User user = (User) session.getAttribute("user");
