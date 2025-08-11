@@ -11,7 +11,7 @@
 <div class="form-container" style="font-family: Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh;">
     <div class="container" style="width: 400px; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1);">
         <div class="form">
-            <form action="${pageContext.request.contextPath}/quizzes/addQuiz" method="post">
+            <form action="${pageContext.request.contextPath}/quizzes" method="post">
                 <h1 class="text-2xl font-bold mb-4">Create a Quiz</h1>
                 <label for="quizName" class="block mb-2">Quiz Name:</label>
                 <input type="text" id="quizName" name="quizName" class="w-full p-2 mb-4 border rounded" required><br>
