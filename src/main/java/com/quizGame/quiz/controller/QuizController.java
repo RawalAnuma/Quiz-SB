@@ -3,6 +3,7 @@ package com.quizGame.quiz.controller;
 import com.quizGame.quiz.model.Category;
 import com.quizGame.quiz.model.Quiz;
 import com.quizGame.quiz.model.User;
+import com.quizGame.quiz.service.CategoryService;
 import com.quizGame.quiz.service.QuizService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,13 @@ public class QuizController {
     private QuizService quizService;
 
     @Autowired
-    private CategoryController categoryController;
+    private CategoryService categoryService;
 
     @PostMapping//("/addQuiz")
     public String createQuiz(@RequestParam String quizName, @RequestParam String quizDescription, @RequestParam int noOfQuestionsToPlay, @RequestParam int categoryId, HttpSession session) {
         User user = (User) session.getAttribute("user");
-        Category category = categoryController.getCategoryById(categoryId);
+        Category category = categoryService.getCategoryById(categoryId)
+                .orElseThrow(() -> new RuntimeException("Category not found with id: " + categoryId));
         Quiz quiz = new Quiz();
         quiz.setQuizName(quizName);
         quiz.setQuizDescription(quizDescription);
