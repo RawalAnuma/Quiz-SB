@@ -18,7 +18,7 @@
                    class="hover:underline">Add Category</a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/categories/getAllCategories"
+                <a href="${pageContext.request.contextPath}/categories/categoriesForAdmin"
                    class="hover:underline">View Categories</a>
             </li>
             <li>
