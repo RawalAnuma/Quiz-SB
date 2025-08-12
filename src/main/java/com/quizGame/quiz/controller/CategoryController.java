@@ -28,11 +28,20 @@ public class CategoryController {
         categoryService.insertCategory(category);
     }
 
-    @GetMapping("/getAllCategories")
-    public String getAllCategories(Model model){
-        List<Category> categories = categoryService.getAllCategories();
-        model.addAttribute("categories", categories);
+    public List<Category> getAllCategories() {
+        return categoryService.getAllCategories();
+    }
+
+    @GetMapping("/categoriesForUser")
+    public String getCategoriesForUser(Model model){
+        model.addAttribute("categories", getAllCategories());
         return "createQuiz";
+    }
+
+    @GetMapping("/categoriesForAdmin")
+    public String getCategoriesForAdmin(Model model){
+        model.addAttribute("categories", getAllCategories());
+        return "viewCategories";
     }
 
 
