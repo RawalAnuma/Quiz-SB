@@ -8,27 +8,41 @@
 </head>
 <body class="bg-gray-100">
 
-<div class="flex items-center justify-center h-screen ">
-    <div class="bg-white p-10 rounded-lg shadow-lg w-96 text-center box-shadow: 0 0 15px black">
-        <h1 class="text-3xl font-bold mb-6 text-blue-600">Welcome to Quiz World</h1>
-        <p class="text-gray-700 mb-8">What would you like to do?</p>
+<!-- Navbar -->
+<nav class="bg-blue-600 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
 
-        <div class="flex flex-col gap-4">
-            <a href="${pageContext.request.contextPath}/categories/getAllCategories" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
-                Create a New Quiz
-            </a>
+            <!-- Left side - Logo -->
+            <div class="flex items-center">
+                <span class="text-white font-bold text-xl">User Dashboard</span>
+            </div>
 
-            <a href="${pageContext.request.contextPath}/quizzes/getQuiz" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">
-                View All My Quizzes
-            </a>
+            <!-- Center - Navigation Links -->
+            <div class="hidden md:flex space-x-6">
+                <a href="${pageContext.request.contextPath}/user" class="text-white hover:text-yellow-300">Home</a>
+                <a href="${pageContext.request.contextPath}/categories/categoriesForUser" class="text-white hover:text-yellow-300">Create Quiz</a>
+                <a href="${pageContext.request.contextPath}/quizzes/getQuiz" class="text-white hover:text-yellow-300">My Quizzes</a>
+                <a href="${pageContext.request.contextPath}/quizzes/allQuizzes" class="text-white hover:text-yellow-300">Play Quiz</a>
+            </div>
 
-            <a href="${pageContext.request.contextPath}/quizzes/allQuizzes" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded">
-                Play Quiz
-            </a>
+            <!-- Right side - Logout -->
+            <div>
+                <a href="${pageContext.request.contextPath}/user/logout"
+                   class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+                   Logout
+                </a>
+            </div>
         </div>
     </div>
-</div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mx-auto mt-10">
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Welcome User</h1>
+    </div>
+
 
 </body>
 </html>
-
