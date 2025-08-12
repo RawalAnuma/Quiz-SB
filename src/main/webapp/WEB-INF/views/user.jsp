@@ -21,6 +21,10 @@
             <a href="${pageContext.request.contextPath}/quizzes/getQuiz" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">
                 View All My Quizzes
             </a>
+
+            <a href="${pageContext.request.contextPath}/quizzes/allQuizzes" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded">
+                Play Quiz
+            </a>
         </div>
     </div>
 </div>
