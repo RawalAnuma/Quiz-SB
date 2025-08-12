@@ -15,7 +15,7 @@
         <h1 class="text-xl font-bold">Admin Dashboard</h1>
         <ul class="flex space-x-6">
             <li><a href="${pageContext.request.contextPath}/add" class="hover:underline">Add Category</a></li>
-            <li><a href="${pageContext.request.contextPath}/categories/getAllCategories" class="hover:underline">View Categories</a></li>
+            <li><a href="${pageContext.request.contextPath}/categories/categoriesForAdmin" class="hover:underline">View Categories</a></li>
             <li><a href="${pageContext.request.contextPath}/user/logout" class="hover:underline">Logout</a></li>
         </ul>
     </div>
