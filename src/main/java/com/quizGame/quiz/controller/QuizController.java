@@ -1,9 +1,11 @@
 package com.quizGame.quiz.controller;
 
 import com.quizGame.quiz.model.Category;
+import com.quizGame.quiz.model.Question;
 import com.quizGame.quiz.model.Quiz;
 import com.quizGame.quiz.model.User;
 import com.quizGame.quiz.service.CategoryService;
+import com.quizGame.quiz.service.QuestionService;
 import com.quizGame.quiz.service.QuizService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class QuizController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private QuestionService questionService;
 
     @PostMapping//("/addQuiz")
     public String createQuiz(@RequestParam String quizName, @RequestParam String quizDescription, @RequestParam int noOfQuestionsToPlay, @RequestParam int categoryId, HttpSession session) {
@@ -55,10 +60,13 @@ public class QuizController {
     @GetMapping("/setStatus/{quizId}/{status}")
     public String setQuizStatus(@PathVariable int quizId, @PathVariable String status) {
         Quiz quiz = getQuizById(quizId);
-        if ("Active".equalsIgnoreCase(status)) {
+        if(status.equals("active")) {
             quiz.setStatus(false);
-        } else if ("Inactive".equalsIgnoreCase(status)) {
+            System.out.println("Setting quiz status to active: " + quiz.getQuizName());
+        } else if(status.equals("inactive")) {
             quiz.setStatus(true);
+            System.out.println("Setting quiz status to inactive: " + quiz.getQuizName());
+
         } else {
             throw new RuntimeException("Invalid status: " + status);
         }
@@ -72,6 +80,26 @@ public class QuizController {
         quizService.deleteQuiz(quizId);
         return "redirect:/quizzes/getQuiz";
     }
+
+    @GetMapping("/playQuiz/{quizId}/{questionIndex}")
+    public String getQuestionToPlay(@PathVariable int quizId, @PathVariable int questionIndex, Model model) {
+        Quiz quiz = getQuizById(quizId);
+        List<Question> questions = questionService.getQuestionsByQuizId(quiz);
+
+        if(questionIndex < 0 || questionIndex >= questions.size()) {
+            return "redirect:/quizzes/result";
+        }
+        Question currentQuestion = questions.get(questionIndex);
+        model.addAttribute("question", currentQuestion);
+        model.addAttribute("quizId", quizId);
+        model.addAttribute("questionIndex", questionIndex);
+        model.addAttribute("totalQuestions", questions.size());
+
+        return "quizGame";
+
+
+    }
+
 
     public Quiz getQuizById(int quizId) {
         return quizService.getQuizById(quizId).orElseThrow(() -> new RuntimeException("Quiz not found with id: " + quizId));
