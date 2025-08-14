@@ -58,8 +58,9 @@
                         <td class="py-2 px-4 font-medium">${quiz.quizName}</td>
                         <td class="py-2 px-4">${quiz.quizDescription}</td>
                         <td class="py-2 px-4 text-center">${quiz.noOfQuestionsToPlay}</td>
+                        <c:set var = "questionIndex" value = "0"/>
                         <td class="py-2 px-4 text-center">
-                            <a href="${pageContext.request.contextPath}/questions/playQuiz/${quiz.quizId}"
+                            <a href="${pageContext.request.contextPath}/quizzes/playQuiz/${quiz.quizId}/${questionIndex}"
                                class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1.5 px-4 rounded-lg transition">
                                 Play Quiz
                             </a>
