@@ -76,11 +76,6 @@ public class QuestionController {
         return "questions";
     }
 
-    @GetMapping("/playQuiz/{quizId}")
-    public String getQuestionToPlay(@PathVariable int quizId, Model model) {
-        model.addAttribute("questions", getQuestionsByQuizId(quizId));
-        return "quizGame";
-    }
 
     public Question getQuestionById(int questionId) {
         return questionService.getQuestionById(questionId);
