@@ -20,7 +20,7 @@
 
             <!-- Center - Navigation Links -->
             <div class="hidden md:flex space-x-6">
-                <a href="${pageContext.request.contextPath}/user" class="text-white hover:text-yellow-300">Home</a>
+                <a href="#homeContent" class="text-white hover:text-yellow-300">Home</a>
                 <a href="${pageContext.request.contextPath}/categories/categoriesForUser" class="text-white hover:text-yellow-300">Create Quiz</a>
                 <a href="${pageContext.request.contextPath}/quizzes/getQuiz" class="text-white hover:text-yellow-300">My Quizzes</a>
                 <a href="${pageContext.request.contextPath}/quizzes/allQuizzes" class="text-white hover:text-yellow-300">Play Quiz</a>
@@ -38,10 +38,11 @@
 </nav>
 
 <!-- Main Content -->
-<div class="container mx-auto mt-10">
+<div id= "homeContent"class="container mx-auto mt-10">
     <div class="bg-white p-6 rounded-lg shadow-lg">
         <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Welcome User</h1>
     </div>
+</div>
 
 
 </body>
