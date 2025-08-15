@@ -16,38 +16,31 @@
         <h3 class="text-lg text-gray-700 mb-4">${question.title}</h3>
         <p class="text-gray-600 mb-4">Select one of the options below:</p>
 
-        <form action = "${pageContext.request.contextPath}/quizzes/playQuiz/${quizId}/${questionIndex}" method="post">
+        <form action="${pageContext.request.contextPath}/quizzes/playQuiz/${quizId}/${questionIndex}" method="post">
             <div class="space-y-4">
                 <div>
-                    <input type="radio" id="option1" name="selectedOption" value="1" class="mr-2" required>
-                    <label for="option1" class="text-gray-700">${question.option1}</label>
+                    <input type="radio" id="option1" name="selectedOption" value="1" required>
+                    <label for="option1">${question.option1}</label>
                 </div>
-
                 <div>
-                    <input type="radio" id="option2" name="selectedOption" value="2" class="mr-2" required>
-                    <label for="option2" class="text-gray-700">${question.option2}</label>
+                    <input type="radio" id="option2" name="selectedOption" value="2" required>
+                    <label for="option2">${question.option2}</label>
                 </div>
-
                 <div>
-                    <input type="radio" id="option3" name="selectedOption" value="3" class="mr-2" required>
-                    <label for="option3" class="text-gray-700">${question.option3}</label>
+                    <input type="radio" id="option3" name="selectedOption" value="3" required>
+                    <label for="option3">${question.option3}</label>
                 </div>
-
                 <div>
-                    <input type="radio" id="option4" name="selectedOption" value="4" class="mr-2" required>
-                    <label for="option4" class="text-gray-700">${question.option4}</label>
+                    <input type="radio" id="option4" name="selectedOption" value="4" required>
+                    <label for="option4">${question.option4}</label>
                 </div>
             </div>
 
             <button type="submit"
                 class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">
                 <c:choose>
-                    <c:when test="${questionIndex + 1 == totalQuestions}">
-                        Submit Quiz
-                    </c:when>
-                    <c:otherwise>
-                        Next Question
-                    </c:otherwise>
+                    <c:when test="${questionIndex + 1 == totalQuestions}">Submit Quiz</c:when>
+                    <c:otherwise>Next Question</c:otherwise>
                 </c:choose>
             </button>
         </form>
