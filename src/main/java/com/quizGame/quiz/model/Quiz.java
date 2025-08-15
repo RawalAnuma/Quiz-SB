@@ -28,7 +28,7 @@ public class Quiz {
     private Date createdDate;
 
     @Column(name = "status", insertable = false)
-    private boolean status;
+    private Boolean status;
 
     public Quiz() {
     }
@@ -79,9 +79,9 @@ public class Quiz {
     }
     public String getStatus(){
         if(status) {
-            return "Active";
+            return "active";
         } else {
-            return "Inactive";
+            return "inActive";
         }
     }
     public void setStatus(boolean status) {
