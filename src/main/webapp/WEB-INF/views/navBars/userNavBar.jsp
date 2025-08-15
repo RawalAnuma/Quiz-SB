@@ -23,6 +23,7 @@
                 <a href="${pageContext.request.contextPath}/categories/categoriesForUser" class="text-white hover:text-yellow-300">Create Quiz</a>
                 <a href="${pageContext.request.contextPath}/quizzes/getQuiz" class="text-white hover:text-yellow-300">My Quizzes</a>
                 <a href="${pageContext.request.contextPath}/quizzes/allQuizzes" class="text-white hover:text-yellow-300">Play Quiz</a>
+                <a href="${pageContext.request.contextPath}/scores/myScores" class="text-white hover:text-yellow-300">My Scores</a>
             </div>
 
             <!-- Right side - Logout -->
