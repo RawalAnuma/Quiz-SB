@@ -16,7 +16,7 @@
         <h3 class="text-lg text-gray-700 mb-4">${question.title}</h3>
         <p class="text-gray-600 mb-4">Select one of the options below:</p>
 
-        <form action = "${pageContext.request.contextPath}/quizzes/playQuiz/${quizId}/${questionIndex + 1}" method="get">
+        <form action = "${pageContext.request.contextPath}/quizzes/playQuiz/${quizId}/${questionIndex}" method="post">
             <div class="space-y-4">
                 <div>
                     <input type="radio" id="option1" name="selectedOption" value="1" class="mr-2" required>
