@@ -63,7 +63,7 @@ public class QuizController {
         if(status.equals("active")) {
             quiz.setStatus(false);
             System.out.println("Setting quiz status to active: " + quiz.getQuizName());
-        } else if(status.equals("inactive")) {
+        } else if(status.equals("inActive")) {
             quiz.setStatus(true);
             System.out.println("Setting quiz status to inactive: " + quiz.getQuizName());
 
@@ -96,8 +96,6 @@ public class QuizController {
         model.addAttribute("totalQuestions", questions.size());
 
         return "quizGame";
-
-
     }
 
 
