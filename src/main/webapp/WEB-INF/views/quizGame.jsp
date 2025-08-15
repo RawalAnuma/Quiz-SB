@@ -19,22 +19,22 @@
         <form action = "${pageContext.request.contextPath}/quizzes/playQuiz/${quizId}/${questionIndex + 1}" method="get">
             <div class="space-y-4">
                 <div>
-                    <input type="radio" id="option1" name="selectedOption" value="${question.option1}" class="mr-2" required>
+                    <input type="radio" id="option1" name="selectedOption" value="1" class="mr-2" required>
                     <label for="option1" class="text-gray-700">${question.option1}</label>
                 </div>
 
                 <div>
-                    <input type="radio" id="option2" name="selectedOption" value="${question.option2}" class="mr-2" required>
+                    <input type="radio" id="option2" name="selectedOption" value="2" class="mr-2" required>
                     <label for="option2" class="text-gray-700">${question.option2}</label>
                 </div>
 
                 <div>
-                    <input type="radio" id="option3" name="selectedOption" value="${question.option3}" class="mr-2" required>
+                    <input type="radio" id="option3" name="selectedOption" value="3" class="mr-2" required>
                     <label for="option3" class="text-gray-700">${question.option3}</label>
                 </div>
 
                 <div>
-                    <input type="radio" id="option4" name="selectedOption" value="${question.option4}" class="mr-2" required>
+                    <input type="radio" id="option4" name="selectedOption" value="4" class="mr-2" required>
                     <label for="option4" class="text-gray-700">${question.option4}</label>
                 </div>
             </div>
