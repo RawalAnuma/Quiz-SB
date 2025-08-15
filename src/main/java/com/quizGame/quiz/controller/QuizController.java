@@ -81,6 +81,23 @@ public class QuizController {
         return "redirect:/quizzes/getQuiz";
     }
 
+    @GetMapping("/playQuiz/{quizId}/{questionIndex}")
+    public String showQuestion(@PathVariable int quizId, @PathVariable int questionIndex, Model model){
+        Quiz quiz = getQuizById(quizId);
+        List<Question> questions = questionService.getQuestionsByQuizId(quiz);
+
+        if(questionIndex < 0 || questionIndex >= questions.size()){
+            return "redirect:/quizzes/allQuizzes";
+        }
+        Question currentQuestion = questions.get(questionIndex);
+        model.addAttribute("question", currentQuestion);
+        model.addAttribute("quizId", quizId);
+        model.addAttribute("questionIndex", questionIndex);
+        model.addAttribute("totalQuestions", questions.size());
+        return "quizGame";
+
+    }
+
     @PostMapping("/playQuiz/{quizId}/{questionIndex}")
     public String submitAnswer(@PathVariable int quizId, @PathVariable int questionIndex, @RequestParam("selectedOption") int selectedOption, HttpSession session) {
 
@@ -104,23 +121,6 @@ public class QuizController {
             return "redirect:/scores/saveScore/" + quizId;
         }
         return "redirect:/quizzes/playQuiz/" + quizId + "/" + (questionIndex + 1);
-
-    }
-
-    @GetMapping("/playQuiz/{quizId}/{questionIndex}")
-    public String showQuestion(@PathVariable int quizId, @PathVariable int questionIndex, Model model){
-        Quiz quiz = getQuizById(quizId);
-        List<Question> questions = questionService.getQuestionsByQuizId(quiz);
-
-        if(questionIndex < 0 || questionIndex >= questions.size()){
-            return "redirect:/quizzes/allQuizzes";
-        }
-        Question currentQuestion = questions.get(questionIndex);
-        model.addAttribute("question", currentQuestion);
-        model.addAttribute("quizId", quizId);
-        model.addAttribute("questionIndex", questionIndex);
-        model.addAttribute("totalQuestions", questions.size());
-        return "quizGame";
 
     }
 
