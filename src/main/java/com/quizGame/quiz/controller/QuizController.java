@@ -81,21 +81,47 @@ public class QuizController {
         return "redirect:/quizzes/getQuiz";
     }
 
-    @GetMapping("/playQuiz/{quizId}/{questionIndex}")
-    public String getQuestionToPlay(@PathVariable int quizId, @PathVariable int questionIndex, Model model) {
+    @PostMapping("/playQuiz/{quizId}/{questionIndex}")
+    public String submitAnswer(@PathVariable int quizId, @PathVariable int questionIndex, @RequestParam("selectedOption") int selectedOption, HttpSession session) {
+
+        Integer currentScore = (Integer) session.getAttribute("score");
+        if(currentScore == null) {
+            currentScore = 0; // Initialize score if not present
+        }
+
         Quiz quiz = getQuizById(quizId);
         List<Question> questions = questionService.getQuestionsByQuizId(quiz);
 
-        if(questionIndex < 0 || questionIndex >= questions.size()) {
-            return "redirect:/quizzes/result";
+        Question currentQuestion = questions.get(questionIndex);
+
+        if(currentQuestion.checkAnswer(selectedOption)){
+            currentScore++;
+        }
+        session.setAttribute("score", currentScore);
+
+        int totalQuestions = questionService.getQuestionsByQuizId(quiz).size();
+        if(questionIndex + 1 >= totalQuestions){
+            return "redirect:/scores/saveScore/" + quizId;
+        }
+        return "redirect:/quizzes/playQuiz/" + quizId + "/" + (questionIndex + 1);
+
+    }
+
+    @GetMapping("/playQuiz/{quizId}/{questionIndex}")
+    public String showQuestion(@PathVariable int quizId, @PathVariable int questionIndex, Model model){
+        Quiz quiz = getQuizById(quizId);
+        List<Question> questions = questionService.getQuestionsByQuizId(quiz);
+
+        if(questionIndex < 0 || questionIndex >= questions.size()){
+            return "redirect:/quizzes/allQuizzes";
         }
         Question currentQuestion = questions.get(questionIndex);
         model.addAttribute("question", currentQuestion);
         model.addAttribute("quizId", quizId);
         model.addAttribute("questionIndex", questionIndex);
         model.addAttribute("totalQuestions", questions.size());
-
         return "quizGame";
+
     }
 
 
