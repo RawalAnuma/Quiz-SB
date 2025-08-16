@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/scores")
 public class ScoreController {
@@ -51,5 +53,12 @@ public class ScoreController {
         User currentUser = (User) session.getAttribute("user");
         model.addAttribute("scores", scoreService.getScoresByUser(currentUser));
         return "myScores"; // Redirect to a page to display the user's scores
+    }
+
+    @GetMapping("/allScores")
+    public String allScores(Model model) {
+        List<Score> allScores = scoreService.getAllScores();
+        model.addAttribute("scores", allScores);
+        return "scoreboard"; // Redirect to a page to display all scores
     }
 }
