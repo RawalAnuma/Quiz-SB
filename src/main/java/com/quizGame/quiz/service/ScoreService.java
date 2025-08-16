@@ -18,6 +18,10 @@ public class ScoreService {
         scoreRepository.save(score);
     }
 
+    public List<Score> getAllScores() {
+        return scoreRepository.findAll();
+    }
+
     public List<Score> getScoresByUser(User user){
         return scoreRepository.findByUser(user);
     }
