@@ -10,7 +10,7 @@
 <body>
 <%@ include file="/WEB-INF/views/navBars/userNavBar.jsp" %>
 
-<main class="w-full max-w-2xl bg-white shadow-lg rounded-xl p-6">
+<main class="w-full max-w-2xl bg-white shadow-lg rounded-xl p-6 justify-center mx-auto mt-10">
     <div class="mb-8 border-b border-gray-200 pb-6">
         <h1 class="text-2xl font-bold text-gray-800 mb-2">Question ${questionIndex + 1}</h1>
         <h3 class="text-lg text-gray-700 mb-4">${question.title}</h3>

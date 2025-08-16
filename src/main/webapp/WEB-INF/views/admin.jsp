@@ -7,28 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">
-
-<!-- Navbar -->
-<nav class="bg-blue-600 p-4 text-white shadow-md">
-    <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-xl font-bold">Admin Dashboard</h1>
-        <ul class="flex space-x-6">
-            <li>
-                <a href="${pageContext.request.contextPath}/add"
-                   class="hover:underline">Add Category</a>
-            </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/categories/categoriesForAdmin"
-                   class="hover:underline">View Categories</a>
-            </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/user/logout"
-                class="hover:underline">Logout</a>
-            </li>
-        </ul>
+<%@ include file="/WEB-INF/views/navBars/adminNavBar.jsp" %>
+<div id="homeContent" class="min-h-screen flex items-center justify-center bg-gray-100 overflow-hidden">
+    <div class="bg-white p-6 rounded-xl shadow-lg text-center w-full max-w-md">
+        <h1 class="text-3xl font-semibold text-gray-800">
+            Welcome Admin 👋
+        </h1>
+        <p class="text-gray-600 mt-3">
+            Use the navigation bar above to create and explore categories!
+        </p>
     </div>
-</nav>
+</div>
 
-<h1 class="text-3xl font-bold mb-6 text-center text-gray-800 mt-10">Welcome Admin</h1>
 </body>
 </html>

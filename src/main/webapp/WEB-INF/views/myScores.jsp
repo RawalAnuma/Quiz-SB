@@ -1,32 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>My Scores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<%@ include file="/WEB-INF/views/navBars/userNavBar.jsp" %>
-<h1 class="text-2xl font-bold mb-4">My Quiz History</h1>
-<table class="table-auto border-collapse border border-gray-300 w-full">
-    <thead>
-        <tr>
-            <th class="border px-4 py-2">Quiz ID</th>
-            <th class="border px-4 py-2">Score</th>
-            <th class="border px-4 py-2">Played Date</th>
-        </tr>
-    </thead>
-    <tbody>
-        <c:forEach var="score" items="${scores}">
-            <tr>
-                <td class="border px-4 py-2">${score.quiz.quizId}</td>
-                <td class="border px-4 py-2">${score.score}</td>
-                <td class="border px-4 py-2">${score.playedDate}</td>
-            </tr>
-        </c:forEach>
-    </tbody>
-</table>
-<p class="mt-4">
-    <a href="${pageContext.request.contextPath}/quizzes/allQuizzes" class="inline-block bg-blue-600 text-white px-4 py-2 rounded">Back to Quizzes</a>
+<body class="bg-gray-100 text-gray-900">
+    <%@ include file="/WEB-INF/views/navBars/userNavBar.jsp" %>
+
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-6 text-center">📊 My Quiz History</h1>
+
+        <div class="overflow-x-auto shadow-lg rounded-lg">
+            <table class="min-w-full border border-gray-300 bg-white">
+                <thead class="bg-blue-600 text-white">
+                    <tr>
+                        <th class="border px-6 py-3 text-left">Quiz ID</th>
+                        <th class="border px-6 py-3 text-left">Score</th>
+                        <th class="border px-6 py-3 text-left">Played Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="score" items="${scores}">
+                        <tr class="hover:bg-gray-100">
+                            <td class="border px-6 py-3">${score.quiz.quizId}</td>
+                            <td class="border px-6 py-3 font-semibold text-blue-700">${score.score}</td>
+                            <td class="border px-6 py-3">${score.playedDate}</td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-6 text-center">
+            <a href="${pageContext.request.contextPath}/quizzes/allQuizzes"
+               class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md">
+                ⬅ Back to Quizzes
+            </a>
+        </div>
+    </div>
 </body>
 </html>

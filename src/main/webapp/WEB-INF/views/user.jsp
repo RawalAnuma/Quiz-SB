@@ -10,11 +10,17 @@
 <%@ include file="/WEB-INF/views/navBars/userNavBar.jsp" %>
 
 <!-- Main Content -->
-<div id= "homeContent"class="container mx-auto mt-10">
-    <div class="bg-white p-6 rounded-lg shadow-lg">
-        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Welcome User</h1>
+<div id="homeContent" class="min-h-screen flex items-center justify-center bg-gray-100 overflow-hidden">
+    <div class="bg-white p-6 rounded-xl shadow-lg text-center w-full max-w-md">
+        <h1 class="text-3xl font-semibold text-gray-800">
+            Welcome ${user.userName} 👋
+        </h1>
+        <p class="text-gray-600 mt-3">
+            Use the navigation bar above to explore quizzes, scores, and more.
+        </p>
     </div>
 </div>
+
 
 
 </body>
