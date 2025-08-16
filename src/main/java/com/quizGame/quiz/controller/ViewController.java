@@ -58,4 +58,13 @@ public class ViewController {
         return "createQuiz";
     }
 
+    @GetMapping("/userDashboard")
+    public String showUserDashboard() {
+        return "user";
+    }
+
+    @GetMapping("/adminDashboard")
+    public String showAdminDashboard() {
+        return "admin";
+    }
 }
