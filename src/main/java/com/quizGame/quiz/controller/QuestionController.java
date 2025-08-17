@@ -68,12 +68,6 @@ public class QuestionController {
     @GetMapping("/updateQuestionView/{questionId}")
     public String showUpdateQuestion(@PathVariable int questionId, Model model) {
         Question question = questionService.getQuestionById(questionId);
-
-        System.out.println("DEBUG: Question fetched:");
-        System.out.println("Title: " + question.getTitle());
-        System.out.println("Option1: " + question.getOption1());
-        System.out.println("CorrectOption: " + question.getCorrectOption());
-
         model.addAttribute("question", question);
         return "updateQuestion"; // JSP page name
     }
