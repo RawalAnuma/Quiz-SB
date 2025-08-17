@@ -57,23 +57,21 @@ public class QuizController {
         return "quizzes";
     }
 
-    @GetMapping("/setStatus/{quizId}/{status}")
-    public String setQuizStatus(@PathVariable int quizId, @PathVariable String status) {
+    @GetMapping("/setStatus/{quizId}")
+    public String setQuizStatus(@PathVariable int quizId) {
         Quiz quiz = getQuizById(quizId);
-        if(status.equals("active")) {
-            quiz.setStatus(false);
-            System.out.println("Setting quiz status to active: " + quiz.getQuizName());
-        } else if(status.equals("inActive")) {
-            quiz.setStatus(true);
-            System.out.println("Setting quiz status to inactive: " + quiz.getQuizName());
 
-        } else {
-            throw new RuntimeException("Invalid status: " + status);
-        }
+        // toggle status
+        boolean newStatus = (quiz.getStatus() == null || !quiz.getStatus());
+        quiz.setStatus(newStatus);
+
+        System.out.println("Quiz " + quiz.getQuizName() + " set to " + (newStatus ? "Active" : "Inactive"));
+
         quizService.setStatus(quiz);
         return "redirect:/quizzes/getQuiz";
-
     }
+
+
 
     @GetMapping("/deleteQuiz/{quizId}")
     public String deleteQuiz(@PathVariable int quizId) {
