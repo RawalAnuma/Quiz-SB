@@ -1,21 +1,39 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<!-- Navbar -->
-<nav class="bg-blue-600 p-4 text-white shadow-md">
-    <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-xl font-bold">Admin Dashboard</h1>
-        <ul class="flex space-x-6">
-            <li><a href="${pageContext.request.contextPath}/adminDashboard#homeContent" class="hover:underline">Home</a></li>
-            <li><a href="${pageContext.request.contextPath}/add" class="hover:underline">Add Category</a></li>
-            <li><a href="${pageContext.request.contextPath}/categories/categoriesForAdmin" class="hover:underline">View Categories</a></li>
-            <li><a href="${pageContext.request.contextPath}/user/logout" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded hover:underline">Logout</a></li>
-        </ul>
+<body class="bg-amber-50">
+
+<nav class="fixed top-0 w-full z-50 bg-gradient-to-r from-amber-200 via-amber-300 to-yellow-200 shadow-md">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+
+            <!-- Logo / Dashboard Name -->
+            <div class="flex items-center">
+                <span class="text-olive-900 font-bold text-xl">Admin Dashboard</span>
+            </div>
+
+            <!-- Navigation Links (centered) -->
+            <div class="hidden md:flex space-x-16">
+                <a href="${pageContext.request.contextPath}/adminDashboard#homeContent"
+                   class="text-olive-800 hover:text-terracotta-700 hover:underline font-semibold">Home</a>
+                <a href="${pageContext.request.contextPath}/add"
+                   class="text-olive-800 hover:text-terracotta-700 hover:underline font-semibold">Add Category</a>
+                <a href="${pageContext.request.contextPath}/categories/categoriesForAdmin"
+                   class="text-olive-800 hover:text-terracotta-700 hover:underline font-semibold">View Categories</a>
+            </div>
+
+            <!-- Logout Button on the right -->
+            <div>
+                <a href="${pageContext.request.contextPath}/user/logout"
+                   class="bg-orange-500 hover:bg-orange-800 text-white px-4 py-2 rounded font-semibold">
+                   Logout
+                </a>
+            </div>
+        </div>
     </div>
 </nav>
 
