@@ -77,14 +77,10 @@ public class Quiz {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
-    public String getStatus(){
-        if(status) {
-            return "active";
-        } else {
-            return "inActive";
-        }
+    public Boolean getStatus(){
+        return status;
     }
-    public void setStatus(boolean status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 }
