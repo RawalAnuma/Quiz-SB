@@ -57,7 +57,7 @@ public class ScoreController {
 
     @GetMapping("/allScores")
     public String allScores(Model model) {
-        List<Score> allScores = scoreService.getAllScores();
+        List<Score> allScores = scoreService.getAllScoresDesc();
         model.addAttribute("scores", allScores);
         return "scoreboard"; // Redirect to a page to display all scores
     }
