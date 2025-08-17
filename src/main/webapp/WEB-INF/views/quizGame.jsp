@@ -7,14 +7,17 @@
     <title>Quiz Game</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-amber-50">
+
 <%@ include file="/WEB-INF/views/navBars/userNavBar.jsp" %>
 
-<main class="w-full max-w-2xl bg-white shadow-lg rounded-xl p-6 justify-center mx-auto mt-10">
-    <div class="mb-8 border-b border-gray-200 pb-6">
-        <h1 class="text-2xl font-bold text-gray-800 mb-2">Question ${questionIndex + 1}</h1>
-        <h3 class="text-lg text-gray-700 mb-4">${question.title}</h3>
-        <p class="text-gray-600 mb-4">Select one of the options below:</p>
+<main class="w-full max-w-2xl bg-amber-100 shadow-lg rounded-xl p-6 justify-center mx-auto mt-28">
+    <!-- mt-28 ensures space below fixed navbar (adjust if needed) -->
+
+    <div class="mb-8 border-b border-olive-200 pb-6">
+        <h1 class="text-2xl font-bold text-olive-900 mb-2">Question ${questionIndex + 1}</h1>
+        <h3 class="text-lg text-olive-800 mb-4">${question.title}</h3>
+        <p class="text-olive-700 mb-4">Select one of the options below:</p>
 
         <form action="${pageContext.request.contextPath}/quizzes/playQuiz/${quizId}/${questionIndex}" method="post">
             <div class="space-y-4">
@@ -37,7 +40,7 @@
             </div>
 
             <button type="submit"
-                class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+                class="mt-4 bg-green-400 text-olive-800 px-4 py-2 rounded hover:bg-olive-900 transition-colors font-semibold">
                 <c:choose>
                     <c:when test="${questionIndex + 1 == totalQuestions}">Submit Quiz</c:when>
                     <c:otherwise>Next Question</c:otherwise>
@@ -46,5 +49,6 @@
         </form>
     </div>
 </main>
+
 </body>
 </html>

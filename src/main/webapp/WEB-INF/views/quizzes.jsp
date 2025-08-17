@@ -7,45 +7,45 @@
     <title>Quiz Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50">
+<body class="bg-amber-50">
+
 <%@ include file="/WEB-INF/views/navBars/userNavBar.jsp" %>
 
-<div class="max-w-6xl mx-auto p-8">
-    <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Quiz Details</h1>
+<div class="max-w-6xl mx-auto p-8 pt-24">
+    <h1 class="text-3xl font-bold mb-6 text-center text-olive-900">Quiz Details</h1>
 
     <div class="overflow-x-auto rounded-lg shadow-lg">
-        <table class="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
-            <thead class="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
+        <table class="min-w-full bg-beige-100 border border-olive-200 rounded-lg overflow-hidden text-center">
+            <thead class="bg-gradient-to-r from-amber-200 via-amber-300 to-terracotta-200 text-olive-900">
             <tr>
-                <th class="py-3 px-4 text-left">Quiz ID</th>
-                <th class="py-3 px-4 text-left">Quiz Name</th>
-                <th class="py-3 px-4 text-left">Description</th>
-                <th class="py-3 px-4 text-left">No. of Questions</th>
-                <th class="py-3 px-4 text-left">Actions</th>
+                <th class="py-3 px-4 border border-olive-300">Quiz ID</th>
+                <th class="py-3 px-4 border border-olive-300">Quiz Name</th>
+                <th class="py-3 px-4 border border-olive-300">Description</th>
+                <th class="py-3 px-4 border border-olive-300">No. of Questions</th>
+                <th class="py-3 px-4 border border-olive-300">Actions</th>
             </tr>
             </thead>
-            <tbody class="divide-y divide-gray-200">
+            <tbody>
             <c:forEach var="quiz" items="${quizzes}">
-                <tr class="hover:bg-gray-100 transition-colors duration-200 even:bg-gray-50">
-                    <td class="py-2 px-4">${quiz.quizId}</td>
-                    <td class="py-2 px-4 font-medium text-gray-700">${quiz.quizName}</td>
-                    <td class="py-2 px-4 text-gray-600">${quiz.quizDescription}</td>
-                    <td class="py-2 px-4 text-center">${quiz.noOfQuestionsToPlay}</td>
-                    <td class="py-2 px-4">
-
+                <tr class="hover:bg-amber-100 transition-colors duration-200 even:bg-amber-50">
+                    <td class="py-2 px-4 border border-olive-200">${quiz.quizId}</td>
+                    <td class="py-2 px-4 border border-olive-200 font-medium text-olive-800">${quiz.quizName}</td>
+                    <td class="py-2 px-4 border border-olive-200 text-olive-700">${quiz.quizDescription}</td>
+                    <td class="py-2 px-4 border border-olive-200">${quiz.noOfQuestionsToPlay}</td>
+                    <td class="py-2 px-4 border border-olive-200">
                         <div class="flex flex-wrap gap-2 justify-center">
 
                             <!-- Status Button -->
                             <c:choose>
-                                <c:when test="${quiz.status == 'active'}">
-                                    <a href="${pageContext.request.contextPath}/quizzes/setStatus/${quiz.quizId}/${quiz.status}"
-                                       class="bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
+                                <c:when test="${quiz.status}">
+                                    <a href="${pageContext.request.contextPath}/quizzes/setStatus/${quiz.quizId}"
+                                       class="bg-green-700 hover:bg-green-800 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
                                         Active
                                     </a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="${pageContext.request.contextPath}/quizzes/setStatus/${quiz.quizId}/${quiz.status}"
-                                       class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
+                                    <a href="${pageContext.request.contextPath}/quizzes/setStatus/${quiz.quizId}"
+                                       class="bg-red-700 hover:bg-red-800 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
                                         Inactive
                                     </a>
                                 </c:otherwise>
@@ -60,13 +60,13 @@
 
                             <!-- Add Questions Button -->
                             <a href="<c:url value='/addQuestionView/${quiz.quizId}'/>"
-                               class="bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
+                               class="bg-orange-400 hover:bg-orange-500 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
                                 Add Questions
                             </a>
 
                             <!-- View Questions Button -->
                             <a href="<c:url value='/questions/getQuestions/${quiz.quizId}'/>"
-                               class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
+                               class="bg-rose-400 hover:bg-rose-500 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
                                 View Questions
                             </a>
                         </div>
@@ -77,5 +77,6 @@
         </table>
     </div>
 </div>
+
 </body>
 </html>

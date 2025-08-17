@@ -7,27 +7,30 @@
     <title>My Scores</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body class="bg-amber-50 text-olive-900">
+
     <%@ include file="/WEB-INF/views/navBars/userNavBar.jsp" %>
 
-    <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold mb-6 text-center">📊 My Quiz History</h1>
+    <div class="container mx-auto p-6 mt-28"> <!-- mt-28 ensures spacing below navbar -->
+        <h1 class="text-3xl font-bold mb-8 text-center text-olive-900">📊 My Quiz History</h1>
 
-        <div class="overflow-x-auto shadow-lg rounded-lg">
-            <table class="min-w-full border border-gray-300 bg-white">
-                <thead class="bg-blue-600 text-white">
+        <div class="overflow-x-auto shadow-lg rounded-2xl border border-olive-300">
+            <table class="min-w-full text-left">
+                <thead class="bg-olive-800 text-beige-100 uppercase">
                     <tr>
-                        <th class="border px-6 py-3 text-left">Quiz ID</th>
-                        <th class="border px-6 py-3 text-left">Score</th>
-                        <th class="border px-6 py-3 text-left">Played Date</th>
+                        <th class="px-6 py-3">Quiz ID</th>
+                        <th class="px-6 py-3">Quiz Name</th>
+                        <th class="px-6 py-3">Score</th>
+                        <th class="px-6 py-3">Played Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="score" items="${scores}">
-                        <tr class="hover:bg-gray-100">
-                            <td class="border px-6 py-3">${score.quiz.quizId}</td>
-                            <td class="border px-6 py-3 font-semibold text-blue-700">${score.score}</td>
-                            <td class="border px-6 py-3">${score.playedDate}</td>
+                    <c:forEach var="score" items="${scores}" varStatus="status">
+                        <tr class="${status.index % 2 == 0 ? 'bg-amber-100' : 'bg-beige-200'} hover:bg-olive-200 transition">
+                            <td class="px-6 py-3 font-medium text-olive-900">${score.quiz.quizId}</td>
+                            <td class="px-6 py-3 font-semibold text-olive-900">${score.quiz.quizName}</td>
+                            <td class="px-6 py-3 font-semibold text-olive-700">${score.score}</td>
+                            <td class="px-6 py-3 text-olive-800">${score.playedDate}</td>
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -36,10 +39,11 @@
 
         <div class="mt-6 text-center">
             <a href="${pageContext.request.contextPath}/quizzes/allQuizzes"
-               class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md">
+               class="inline-block bg-green-200 hover:bg-olive-900 text-beige-100 px-6 py-3 rounded-lg shadow-md transition">
                 ⬅ Back to Quizzes
             </a>
         </div>
     </div>
+
 </body>
 </html>

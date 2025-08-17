@@ -7,28 +7,36 @@
     <title>Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gradient-to-r from-yellow-100 via-orange-100 to-rose-100 min-h-screen">
+
 <%@ include file="/WEB-INF/views/navBars/navBar.jsp" %>
-<div class = "form-container" style="font-family: Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <div class="container" style="width: 400px; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1);">
-        <div class="form">
-            <form action = "${pageContext.request.contextPath}/user" method = "post">
-            <h1 class="text-2xl font-bold mb-4 text-align: center">Sign Up</h1><br>
 
-                <label for="fullName" class="block mb-2">Fullname:</label>
-                <input type="text" id="fullName" name="fullName" class="w-full p-2 mb-4 border rounded" required><br>
+<div class="text-center px-6 md:px-0 flex flex-col items-center justify-center min-h-screen">
 
-                <label for="userName" class="block mb-2">Username:</label>
-                <input type="text" id="userName" name="userName" class="w-full p-2 mb-4 border rounded" required><br>
+    <!-- Hero Section -->
+    <h1 class="text-5xl md:text-7xl font-extrabold text-rose-800 mb-6 drop-shadow-lg">🎯 Quiz Master</h1>
+    <p class="text-xl md:text-2xl text-rose-700 mb-12 drop-shadow-md">Test your knowledge. Challenge yourself. Have fun!</p>
 
-                <label for="password" class="block mb-2">Password:</label>
-                <input type="password" id="password" name="password" class="w-full p-2 mb-4 border rounded" required><br>
+    <!-- Feature Cards -->
+    <div class="mt-12 flex flex-col md:flex-row justify-center gap-8">
 
-
-                <input type = "submit" value = "Sign Up" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
-            </form>
-            <p class="mt-4 text-center">Already have an account? <a href="${pageContext.request.contextPath}/login" class="text-blue-500 hover:underline">Login here</a></p>
+        <div class="bg-yellow-200 bg-opacity-80 rounded-3xl p-8 shadow-lg transform hover:scale-105 transition duration-500">
+            <h3 class="text-2xl font-bold text-rose-800 mb-2">📚 100+ Quizzes</h3>
+            <p class="text-rose-700 text-lg">Explore quizzes across multiple categories!</p>
         </div>
+
+        <div class="bg-orange-200 bg-opacity-80 rounded-3xl p-8 shadow-lg transform hover:scale-105 transition duration-500">
+            <h3 class="text-2xl font-bold text-rose-800 mb-2">🏆 Scoreboards</h3>
+            <p class="text-rose-700 text-lg">Compete and see top scorers!</p>
+        </div>
+
+        <div class="bg-rose-200 bg-opacity-80 rounded-3xl p-8 shadow-lg transform hover:scale-105 transition duration-500">
+            <h3 class="text-2xl font-bold text-rose-800 mb-2">🎮 Fun Challenges</h3>
+            <p class="text-rose-700 text-lg">Improve your skills every day!</p>
+        </div>
+
     </div>
+</div>
+
 </body>
 </html>
