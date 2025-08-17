@@ -6,10 +6,10 @@
     <title>Admin Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-amber-50 font-sans">
 <%@ include file="/WEB-INF/views/navBars/adminNavBar.jsp" %>
-<div id="homeContent" class="min-h-screen flex items-center justify-center bg-gray-100 overflow-hidden">
-    <div class="bg-white p-6 rounded-xl shadow-lg text-center w-full max-w-md">
+<div id="homeContent" class="min-h-screen flex items-center justify-center bg-beige-200 overflow-hidden">
+    <div class="bg-amber-100 p-6 rounded-xl shadow-lg text-center w-full max-w-md">
         <h1 class="text-3xl font-semibold text-gray-800">
             Welcome Admin 👋
         </h1>
