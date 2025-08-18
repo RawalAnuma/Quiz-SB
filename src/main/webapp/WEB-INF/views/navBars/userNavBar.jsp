@@ -22,7 +22,7 @@
                    class="text-olive-800 hover:text-terracotta-700 hover:underline font-semibold">Home</a>
                 <a href="${pageContext.request.contextPath}/categories/categoriesForUser"
                    class="text-olive-800 hover:text-terracotta-700 hover:underline font-semibold">Create Quiz</a>
-                <a href="${pageContext.request.contextPath}/quizzes/getQuiz"
+                <a href="${pageContext.request.contextPath}/quizzes/quizById"
                    class="text-olive-800 hover:text-terracotta-700 hover:underline font-semibold">My Quizzes</a>
                 <a href="${pageContext.request.contextPath}/quizzes/allQuizzes"
                    class="text-olive-800 hover:text-terracotta-700 hover:underline font-semibold">Play Quiz</a>
