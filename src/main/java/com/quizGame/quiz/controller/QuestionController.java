@@ -43,7 +43,7 @@ public class QuestionController {
         question.setCorrectOption(correctOption);
         question.setQuiz(quiz);
         questionService.insertQuestion(question);
-        return "redirect:/questions/getQuestions/" + quizId;
+        return "redirect:/questions/quizQuestions/" + quizId;
     }
 
     @PutMapping("/updateQuestion/{questionId}")
@@ -62,7 +62,7 @@ public class QuestionController {
         question.setOption4(option4);
         question.setCorrectOption(correctOption);
         questionService.editQuestion(question);
-        return "redirect:/questions/getQuestions/" + question.getQuiz().getQuizId();
+        return "redirect:/questions/quizQuestions/" + question.getQuiz().getQuizId();
     }
 
     @GetMapping("/updateQuestionView/{questionId}")
@@ -78,7 +78,7 @@ public class QuestionController {
         return questionService.getQuestionsByQuizId(quiz);
     }
 
-    @GetMapping("/getQuestions/{quizId}")
+    @GetMapping("/quizQuestions/{quizId}")
     public String getQuizQuestion(@PathVariable int quizId, Model model){
         model.addAttribute("questions", getQuestionsByQuizId(quizId));
         return "questions";
