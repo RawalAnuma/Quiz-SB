@@ -15,28 +15,28 @@
         <h1 class="text-3xl font-bold mb-8 text-center text-olive-900">🏆 Scoreboard</h1>
 
         <div class="overflow-x-auto shadow-lg rounded-2xl border border-olive-300">
-            <table class="min-w-full text-center">
+            <table class="min-w-full text-center border border-olive-400">
                 <thead class="bg-olive-800 text-beige-100 uppercase">
                     <tr>
-                        <th class="px-6 py-3">User ID</th>
-                        <th class="px-6 py-3">Full Name</th>
-                        <th class="px-6 py-3">Quiz ID</th>
-                        <th class="px-6 py-3">Quiz Name</th>
-                        <th class ="px-6 py-3">No of Questions</th>
-                        <th class="px-6 py-3">Score</th>
-                        <th class="px-6 py-3">Played Date</th>
+                        <th class="px-6 py-3 border border-olive-800">User ID</th>
+                        <th class="px-6 py-3 border border-olive-800">Full Name</th>
+                        <th class="px-6 py-3 border border-olive-800">Quiz ID</th>
+                        <th class="px-6 py-3 border border-olive-800">Quiz Name</th>
+                        <th class ="px-6 py-3 border border-olive-800">No of Questions</th>
+                        <th class="px-6 py-3 border border-olive-800">Score</th>
+                        <th class="px-6 py-3 border border-olive-800">Played Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach var="score" items="${scores}" varStatus="status">
                         <tr class="${status.index % 2 == 0 ? 'bg-amber-100' : 'bg-beige-200'} hover:bg-olive-200 transition">
-                            <td class="px-6 py-3 font-medium text-olive-900">${score.user.userId}</td>
-                            <td class="px-6 py-3 font-semibold text-olive-700">${score.user.fullName}</td>
-                            <td class="px-6 py-3 font-medium text-olive-900">${score.quiz.quizId}</td>
-                            <td class="px-6 py-3 font-semibold text-olive-900">${score.quiz.quizName}</td>
-                            <td class="px-6 py-3 font-medium text-olive-900">${score.quiz.noOfQuestionsToPlay}</td>
-                            <td class="px-6 py-3 font-semibold text-olive-700">${score.score}</td>
-                            <td class="px-6 py-3 font-medium text-olive-900">${score.playedDate}</td>
+                            <td class="px-6 py-3 font-medium text-olive-900 border border-olive-800">${score.user.userId}</td>
+                            <td class="px-6 py-3 font-semibold text-olive-900 border border-olive-800">${score.user.fullName}</td>
+                            <td class="px-6 py-3 font-medium text-olive-900 border border-olive-800">${score.quiz.quizId}</td>
+                            <td class="px-6 py-3 font-semibold text-olive-900 border border-olive-800">${score.quiz.quizName}</td>
+                            <td class="px-6 py-3 font-medium text-olive-900 border border-olive-800">${score.quiz.noOfQuestionsToPlay}</td>
+                            <td class="px-6 py-3 font-semibold text-olive-900 border border-olive-800">${score.score}</td>
+                            <td class="px-6 py-3 font-medium text-olive-900 border border-olive-800">${score.playedDate}</td>
                         </tr>
                     </c:forEach>
                 </tbody>
