@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Quiz Details</title>
+    <title>Quiz Details </title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-amber-50">
@@ -65,7 +65,7 @@
                             </a>
 
                             <!-- View Questions Button -->
-                            <a href="<c:url value='/questions/getQuestions/${quiz.quizId}'/>"
+                            <a href="<c:url value='/questions/quizQuestions/${quiz.quizId}'/>"
                                class="bg-rose-400 hover:bg-rose-500 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
                                 View Questions
                             </a>
