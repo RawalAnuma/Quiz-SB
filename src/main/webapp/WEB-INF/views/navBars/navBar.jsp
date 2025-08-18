@@ -3,14 +3,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Nav Bar - Vintage</title>
+    <title>Nav Bar</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 <nav class="fixed top-0 w-full bg-gradient-to-r from-yellow-200 via-orange-200 to-rose-200 shadow-md z-50">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="${pageContext.request.contextPath}/home" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <span class="self-center text-2xl font-bold text-rose-800">Quiz</span>
+        <span class="self-center text-2xl font-bold text-rose-800">Quiz Master</span>
     </a>
 
     <button data-collapse-toggle="navbar-default" type="button"
