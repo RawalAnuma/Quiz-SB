@@ -40,7 +40,7 @@ public class QuizController {
         quiz.setCategory(category);
         quiz.setUser(user);
         quizService.insertQuiz(quiz);
-        return "redirect:/quizzes/getQuiz";
+        return "redirect:/quizzes/quizById";
     }
 
     @GetMapping("/allQuizzes")
@@ -49,7 +49,7 @@ public class QuizController {
         return "playQuiz";
     }
 
-    @GetMapping("/getQuiz")
+    @GetMapping("/quizById")
     public String getQuizByUserId(HttpSession session, Model model){
         User user = (User) session.getAttribute("user");
         List<Quiz> quizzes = quizService.getQuizByUserId(user);
@@ -68,7 +68,7 @@ public class QuizController {
         System.out.println("Quiz " + quiz.getQuizName() + " set to " + (newStatus ? "Active" : "Inactive"));
 
         quizService.setStatus(quiz);
-        return "redirect:/quizzes/getQuiz";
+        return "redirect:/quizzes/quizById";
     }
 
 
@@ -76,7 +76,7 @@ public class QuizController {
     @GetMapping("/deleteQuiz/{quizId}")
     public String deleteQuiz(@PathVariable int quizId) {
         quizService.deleteQuiz(quizId);
-        return "redirect:/quizzes/getQuiz";
+        return "redirect:/quizzes/quizById";
     }
 
     @GetMapping("/playQuiz/{quizId}/{questionIndex}")
