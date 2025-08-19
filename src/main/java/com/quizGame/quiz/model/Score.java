@@ -1,6 +1,7 @@
 package com.quizGame.quiz.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -22,6 +23,9 @@ public class Score {
     private Quiz quiz;
 
     private int score;
+
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
     private Date playedDate;
 
 
