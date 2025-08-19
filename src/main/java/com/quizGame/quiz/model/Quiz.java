@@ -1,6 +1,7 @@
 package com.quizGame.quiz.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -24,11 +25,12 @@ public class Quiz {
     private String quizDescription;
     private int noOfQuestionsToPlay;
 
-    @Column(name= "createdDate", insertable = false)
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
     private Date createdDate;
 
-    @Column(name = "status", insertable = false)
-    private Boolean status;
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT false")
+    private Boolean status = false;
 
     public Quiz() {
     }
@@ -82,5 +84,10 @@ public class Quiz {
     }
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    @Transient
+    public String getStatusString() {
+        return (status != null && status) ? "Active" : "Inactive";
     }
 }
