@@ -1,6 +1,7 @@
 package com.quizGame.quiz.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -15,7 +16,8 @@ public class Category {
     private String categoryName;
     private String categoryDescription;
 
-    @Column(name = "createdDate", insertable = false)
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
     private Date createdDate;
 
 
