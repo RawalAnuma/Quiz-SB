@@ -13,7 +13,7 @@
 <div class="flex justify-center items-center min-h-screen pt-20">
     <div class="w-full max-w-md bg-gradient-to-br from-yellow-100 via-orange-100 to-rose-100 p-8 rounded-xl shadow-lg">
         <h1 class="text-2xl font-bold mb-6 text-rose-800 text-center">Enter your details</h1>
-        <form action="${pageContext.request.contextPath}/user/login" method="get" class="space-y-4">
+        <form action="${pageContext.request.contextPath}/user/login" method="post" class="space-y-4">
 
             <div>
                 <label for="userName" class="block mb-2 text-rose-900 font-semibold">Username:</label>
