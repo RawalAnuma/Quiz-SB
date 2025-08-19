@@ -27,13 +27,13 @@ public class UserController {
         return "login"; // Redirect to login page after successful signup
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public String login(@RequestParam String userName, @RequestParam String password, HttpSession session) {
         User user = userService.login(userName, password);
         if (user != null) {
             System.out.println("Login successful for user: " + userName);
             session.setAttribute("user", user);
-            if (user.isAdmin()) {
+            if (user.getAdmin()) {
                 return "admin";
             } else {
                 return "user";
