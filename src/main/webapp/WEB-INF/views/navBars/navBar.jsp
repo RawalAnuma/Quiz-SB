@@ -31,9 +31,9 @@
             </a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/signup"
+            <a href="${pageContext.request.contextPath}/login"
                class="block py-2 px-4 rounded-lg text-rose-900 font-semibold bg-gradient-to-r from-rose-100 to-rose-300 hover:from-rose-300 hover:to-rose-100 transition-all duration-300">
-               Sign Up
+               Login
             </a>
         </li>
       </ul>
