@@ -13,43 +13,39 @@
 
 <div class="max-w-6xl mx-auto p-8 pt-24">
     <h1 class="text-3xl font-bold mb-6 text-center text-olive-900">Quiz Details</h1>
-
-    <div class="overflow-x-auto rounded-lg shadow-lg">
-        <table class="min-w-full bg-beige-100 border border-olive-200 rounded-lg overflow-hidden text-center">
-            <thead class="bg-gradient-to-r from-amber-200 via-amber-300 to-terracotta-200 text-olive-900">
+    <table class="min-w-full bg-beige-100 border border-olive-200 rounded-lg overflow-hidden text-center">
+        <thead class="bg-gradient-to-r from-amber-200 via-amber-300 to-terracotta-200 text-olive-900">
             <tr>
                 <th class="py-3 px-4 border border-olive-300">Quiz ID</th>
                 <th class="py-3 px-4 border border-olive-300">Quiz Name</th>
                 <th class="py-3 px-4 border border-olive-300">Description</th>
                 <th class="py-3 px-4 border border-olive-300">No. of Questions</th>
+                <th class="py-3 px-4 border border-olive-300">Status</th> <!-- New Status Column -->
                 <th class="py-3 px-4 border border-olive-300">Actions</th>
             </tr>
-            </thead>
-            <tbody>
+        </thead>
+        <tbody>
             <c:forEach var="quiz" items="${quizzes}">
                 <tr class="hover:bg-amber-100 transition-colors duration-200 even:bg-amber-50">
                     <td class="py-2 px-4 border border-olive-200">${quiz.quizId}</td>
                     <td class="py-2 px-4 border border-olive-200 font-medium text-olive-800">${quiz.quizName}</td>
                     <td class="py-2 px-4 border border-olive-200 text-olive-700">${quiz.quizDescription}</td>
                     <td class="py-2 px-4 border border-olive-200">${quiz.noOfQuestionsToPlay}</td>
+
+                    <!-- Status Column -->
+                    <td class="py-2 px-4 border border-olive-200">
+                        <span class="${quiz.status ? 'text-green-700 font-bold' : 'text-red-700 font-bold'}">
+                            ${quiz.statusString}
+                        </span>
+                    </td>
+
                     <td class="py-2 px-4 border border-olive-200">
                         <div class="flex flex-wrap gap-2 justify-center">
-
-                            <!-- Status Button -->
-                            <c:choose>
-                                <c:when test="${quiz.status}">
-                                    <a href="${pageContext.request.contextPath}/quizzes/setStatus/${quiz.quizId}"
-                                       class="bg-green-700 hover:bg-green-800 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
-                                        Active
-                                    </a>
-                                </c:when>
-                                <c:otherwise>
-                                    <a href="${pageContext.request.contextPath}/quizzes/setStatus/${quiz.quizId}"
-                                       class="bg-red-700 hover:bg-red-800 text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
-                                        Inactive
-                                    </a>
-                                </c:otherwise>
-                            </c:choose>
+                            <!-- Toggle Status Button -->
+                            <a href="${pageContext.request.contextPath}/quizzes/setStatus/${quiz.quizId}"
+                               class="${quiz.status ? 'bg-green-700 hover:bg-green-800' : 'bg-red-700 hover:bg-red-800'} text-white font-semibold py-1 px-3 rounded text-sm shadow-sm">
+                                Toggle Status
+                            </a>
 
                             <!-- Delete Button -->
                             <a href="<c:url value='/quizzes/deleteQuiz/${quiz.quizId}'/>"
@@ -73,9 +69,10 @@
                     </td>
                 </tr>
             </c:forEach>
-            </tbody>
-        </table>
-    </div>
+        </tbody>
+    </table>
+
+
 </div>
 
 </body>
