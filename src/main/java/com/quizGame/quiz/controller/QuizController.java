@@ -39,6 +39,7 @@ public class QuizController {
         quiz.setNoOfQuestionsToPlay(noOfQuestionsToPlay);
         quiz.setCategory(category);
         quiz.setUser(user);
+        quiz.setStatus(false); // Default status is false (inactive)
         quizService.insertQuiz(quiz);
         return "redirect:/quizzes/quizById";
     }
@@ -62,10 +63,10 @@ public class QuizController {
         Quiz quiz = getQuizById(quizId);
 
         // toggle status
-        boolean newStatus = (quiz.getStatus() == null || !quiz.getStatus());
-        quiz.setStatus(newStatus);
+        Boolean newStatus = quiz.getStatus();
+        quiz.setStatus(newStatus == null ? true : !newStatus);
 
-        System.out.println("Quiz " + quiz.getQuizName() + " set to " + (newStatus ? "Active" : "Inactive"));
+        System.out.println("Quiz " + quiz.getQuizName() + " set to " + (quiz.getStatus() ? "Active" : "Inactive"));
 
         quizService.setStatus(quiz);
         return "redirect:/quizzes/quizById";
