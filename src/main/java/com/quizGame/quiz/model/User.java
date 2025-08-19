@@ -1,6 +1,7 @@
 package com.quizGame.quiz.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Date;
 
@@ -18,10 +19,11 @@ public class User {
     private String username;
     private String password;
 
-    @Column(name = "isAdmin", insertable = false)
-    private boolean isAdmin;
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT false")
+    private Boolean admin = false;
 
-    @Column(name = "joinedDate", insertable = false)
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
     private Date joinedDate;
 
     public User(){}
@@ -55,13 +57,12 @@ public class User {
         this.password = password;
     }
 
-
-    public boolean isAdmin() {
-        return isAdmin;
+    public Boolean getAdmin() {
+        return admin;
     }
 
-    public void setAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
     }
 
     public Date getJoinedDate() {
