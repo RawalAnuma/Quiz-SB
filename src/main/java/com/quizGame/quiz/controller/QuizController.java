@@ -72,7 +72,7 @@ public class QuizController {
         return "redirect:/quizzes/quizById";
     }
 
-
+    
 
     @GetMapping("/deleteQuiz/{quizId}")
     public String deleteQuiz(@PathVariable int quizId) {
