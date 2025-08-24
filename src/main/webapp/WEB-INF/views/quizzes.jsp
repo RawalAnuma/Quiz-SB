@@ -17,6 +17,7 @@
         <thead class="bg-gradient-to-r from-amber-200 via-amber-300 to-terracotta-200 text-olive-900">
             <tr>
                 <th class="py-3 px-4 border border-olive-300">Quiz ID</th>
+                <th class="py-3 px-4 border border-olive-300">User</th>
                 <th class="py-3 px-4 border border-olive-300">Quiz Name</th>
                 <th class="py-3 px-4 border border-olive-300">Description</th>
                 <th class="py-3 px-4 border border-olive-300">No. of Questions</th>
@@ -28,6 +29,7 @@
             <c:forEach var="quiz" items="${quizzes}">
                 <tr class="hover:bg-amber-100 transition-colors duration-200 even:bg-amber-50">
                     <td class="py-2 px-4 border border-olive-200">${quiz.quizId}</td>
+                    <td class="py-2 px-4 border border-olive-200 font-medium text-olive-800">${quiz.user.fullName}</td>
                     <td class="py-2 px-4 border border-olive-200 font-medium text-olive-800">${quiz.quizName}</td>
                     <td class="py-2 px-4 border border-olive-200 text-olive-700">${quiz.quizDescription}</td>
                     <td class="py-2 px-4 border border-olive-200">${quiz.noOfQuestionsToPlay}</td>
