@@ -7,36 +7,36 @@
     <title>Scoreboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-amber-50 text-olive-900">
+<body class="bg-gradient-to-br from-teal-50 to-green-100 text-teal-900">
 
     <%@ include file="/WEB-INF/views/navBars/userNavBar.jsp" %>
 
     <div class="container mx-auto p-6 mt-28">
-        <h1 class="text-3xl font-bold mb-8 text-center text-olive-900">🏆 Scoreboard</h1>
+        <h1 class="text-3xl font-bold mb-8 text-center text-teal-900">🏆 Scoreboard</h1>
 
-        <div class="overflow-x-auto shadow-lg rounded-2xl border border-olive-300">
-            <table class="min-w-full text-center border border-olive-400">
-                <thead class="bg-olive-800 text-beige-100 uppercase">
+        <div class="overflow-x-auto shadow-lg rounded-2xl border border-teal-200">
+            <table class="min-w-full text-center border border-teal-300">
+                <thead class="bg-gradient-to-r from-teal-400 via-teal-500 to-green-500 text-white uppercase">
                     <tr>
-                        <th class="px-6 py-3 border border-olive-800">User ID</th>
-                        <th class="px-6 py-3 border border-olive-800">Full Name</th>
-                        <th class="px-6 py-3 border border-olive-800">Quiz ID</th>
-                        <th class="px-6 py-3 border border-olive-800">Quiz Name</th>
-                        <th class ="px-6 py-3 border border-olive-800">No of Questions</th>
-                        <th class="px-6 py-3 border border-olive-800">Score</th>
-                        <th class="px-6 py-3 border border-olive-800">Played Date</th>
+                        <th class="px-6 py-3 border border-teal-300">User ID</th>
+                        <th class="px-6 py-3 border border-teal-300">Full Name</th>
+                        <th class="px-6 py-3 border border-teal-300">Quiz ID</th>
+                        <th class="px-6 py-3 border border-teal-300">Quiz Name</th>
+                        <th class="px-6 py-3 border border-teal-300">No of Questions</th>
+                        <th class="px-6 py-3 border border-teal-300">Score</th>
+                        <th class="px-6 py-3 border border-teal-300">Played Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach var="score" items="${scores}" varStatus="status">
-                        <tr class="${status.index % 2 == 0 ? 'bg-amber-100' : 'bg-beige-200'} hover:bg-olive-200 transition">
-                            <td class="px-6 py-3 font-medium text-olive-900 border border-olive-800">${score.user.userId}</td>
-                            <td class="px-6 py-3 font-semibold text-olive-900 border border-olive-800">${score.user.fullName}</td>
-                            <td class="px-6 py-3 font-medium text-olive-900 border border-olive-800">${score.quiz.quizId}</td>
-                            <td class="px-6 py-3 font-semibold text-olive-900 border border-olive-800">${score.quiz.quizName}</td>
-                            <td class="px-6 py-3 font-medium text-olive-900 border border-olive-800">${score.quiz.noOfQuestionsToPlay}</td>
-                            <td class="px-6 py-3 font-semibold text-olive-900 border border-olive-800">${score.score}</td>
-                            <td class="px-6 py-3 font-medium text-olive-900 border border-olive-800">${score.playedDate}</td>
+                        <tr class="${status.index % 2 == 0 ? 'bg-teal-50' : 'bg-green-50'} hover:bg-teal-100 transition">
+                            <td class="px-6 py-3 font-medium text-teal-900 border border-teal-200">${score.user.userId}</td>
+                            <td class="px-6 py-3 font-semibold text-teal-900 border border-teal-200">${score.user.fullName}</td>
+                            <td class="px-6 py-3 font-medium text-teal-900 border border-teal-200">${score.quiz.quizId}</td>
+                            <td class="px-6 py-3 font-semibold text-teal-900 border border-teal-200">${score.quiz.quizName}</td>
+                            <td class="px-6 py-3 font-medium text-teal-900 border border-teal-200">${score.quiz.noOfQuestionsToPlay}</td>
+                            <td class="px-6 py-3 font-semibold text-teal-900 border border-teal-200">${score.score}</td>
+                            <td class="px-6 py-3 font-medium text-teal-900 border border-teal-200">${score.playedDate}</td>
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -45,7 +45,7 @@
 
         <div class="mt-6 text-center">
             <a href="${pageContext.request.contextPath}/quizzes/allQuizzes"
-               class="inline-block bg-green-200 hover:bg-olive-900 text-beige-100 px-6 py-3 rounded-lg shadow-md transition">
+               class="inline-block bg-gradient-to-r from-teal-500 to-green-500 hover:from-green-500 hover:to-teal-600 text-white px-6 py-3 rounded-lg shadow-md transition">
                 ⬅ Back to Quizzes
             </a>
         </div>
