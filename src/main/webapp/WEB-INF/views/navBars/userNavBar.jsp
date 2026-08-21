@@ -4,20 +4,52 @@
         <div class="flex justify-between items-center h-16">
 
             <!-- Logo -->
-            <span class="text-white font-bold text-xl">User Dashboard</span>
+            <a href="/userDashboard"
+               class="text-white font-bold text-xl hover:text-lime-200">
+                User Dashboard
+            </a>
 
             <!-- Links -->
             <div class="hidden md:flex space-x-10">
-                <a class="text-white hover:text-lime-200 font-semibold">Home</a>
-                <a class="text-white hover:text-lime-200 font-semibold">Create Quiz</a>
-                <a class="text-white hover:text-lime-200 font-semibold">My Quizzes</a>
-                <a class="text-white hover:text-lime-200 font-semibold">Play Quiz</a>
-                <a class="text-white hover:text-lime-200 font-semibold">My Scores</a>
-                <a class="text-white hover:text-lime-200 font-semibold">Scoreboard</a>
+
+                <a href="/userDashboard"
+                   class="text-white hover:text-lime-200 font-semibold">
+                    Home
+                </a>
+
+                <a href="/addQuiz"
+                   class="text-white hover:text-lime-200 font-semibold">
+                    Create Quiz
+                </a>
+
+                <a href="/quizzes/quizById"
+                   class="text-white hover:text-lime-200 font-semibold">
+                    My Quizzes
+                </a>
+
+                <a href="/quizzes/allQuizzes"
+                   class="text-white hover:text-lime-200 font-semibold">
+                    Play Quiz
+                </a>
+
+                <a href="/scores/myScores"
+                   class="text-white hover:text-lime-200 font-semibold">
+                    My Scores
+                </a>
+
+                <a href="/scores/allScores"
+                   class="text-white hover:text-lime-200 font-semibold">
+                    Scoreboard
+                </a>
+
             </div>
 
             <!-- Logout -->
-            <a class="bg-rose-500 hover:bg-rose-700 text-white px-4 py-2 rounded-lg font-semibold">Logout</a>
+            <a href="/logout"
+               class="bg-rose-500 hover:bg-rose-700 text-white px-4 py-2 rounded-lg font-semibold">
+                Logout
+            </a>
+
         </div>
     </div>
 </nav>
